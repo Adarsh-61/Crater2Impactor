@@ -1,0 +1,57 @@
+{
+ "domains": {
+  "lab:Flintshot": {
+   "n": 49,
+   "offset": -0.0228938448657571,
+   "se": 0.008952317667420525
+  },
+  "lab:Alluvium (also DRES)": {
+   "n": 7,
+   "offset": 0.017581614733103792,
+   "se": 0.057168912424447035
+  },
+  "lab:KAFB Desert Alluvium": {
+   "n": 3,
+   "offset": -0.11262273229046806,
+   "se": 0.07151121157667374
+  },
+  "lab:Ormo2024 Lane Mtn sand": {
+   "n": 4,
+   "offset": -0.11205498100779479,
+   "se": 0.01
+  },
+  "asteroid:Ryugu SCI": {
+   "n": 1,
+   "offset": 0.0432811070335839,
+   "se": 0.045
+  },
+  "sc:sivb": {
+   "n": 5,
+   "offset": -0.00426,
+   "se": 0.016379822953866138
+  },
+  "sc:ranger": {
+   "n": 4,
+   "offset": 0.059225,
+   "se": 0.01206554149910673
+  },
+  "sc:lcross": {
+   "n": 1,
+   "offset": 0.0166,
+   "se": 0.045
+  },
+  "sc:falcon9": {
+   "n": 1,
+   "offset": -0.068,
+   "se": 0.045
+  }
+ },
+ "mu0": -0.01800898294310901,
+ "between_domain_sd": 0.05278174701355587,
+ "lodo_logscore_hier": 7.386695900616399,
+ "lodo_logscore_fixed010": 10.264656259678235,
+ "lodo_cov90": 7,
+ "bayes_lodo_logscore": 9.957932486646204,
+ "bayes_cov90": 7,
+ "bayes_between_sd_all": 0.06511242082229515
+}

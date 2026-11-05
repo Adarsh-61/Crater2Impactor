@@ -1,0 +1,77 @@
+{
+ "gpu": {
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "device_count": 2,
+  "devices": [
+   "Tesla T4",
+   "Tesla T4"
+  ],
+  "nvidia_smi": "index, name, memory.total [MiB], utilization.gpu [%]\n0, Tesla T4, 15360 MiB, 83 %\n1, Tesla T4, 15360 MiB, 0 %\n"
+ },
+ "runs": [
+  {
+   "seed": 0,
+   "best_epoch": 118,
+   "sampling_seconds_total": 200.9454381465912,
+   "sampling_ms_per_case_batched64": 180.38190138832243,
+   "latency_ms_single_case_median": 187.29209899902344,
+   "trainable_parameters": 1406740,
+   "box_lo": [
+    -3.292588472366333,
+    2.70412015914917,
+    0.0,
+    0.8010326623916626
+   ],
+   "box_hi": [
+    15.643096923828125,
+    5.357247829437256,
+    1.0,
+    4.397625923156738
+   ],
+   "wall_seconds": 207.67871165275574
+  },
+  {
+   "seed": 1,
+   "best_epoch": 118,
+   "sampling_seconds_total": 202.11214923858643,
+   "sampling_ms_per_case_batched64": 181.4292183470255,
+   "latency_ms_single_case_median": 187.28744983673096,
+   "trainable_parameters": 1406740,
+   "box_lo": [
+    -3.292588472366333,
+    2.70412015914917,
+    0.0,
+    0.8010326623916626
+   ],
+   "box_hi": [
+    15.643096923828125,
+    5.357247829437256,
+    1.0,
+    4.397625923156738
+   ],
+   "wall_seconds": 208.04862213134766
+  },
+  {
+   "seed": 2,
+   "best_epoch": 113,
+   "sampling_seconds_total": 202.0627498626709,
+   "sampling_ms_per_case_batched64": 181.38487420347477,
+   "latency_ms_single_case_median": 187.05356121063232,
+   "trainable_parameters": 1406740,
+   "box_lo": [
+    -3.292588472366333,
+    2.70412015914917,
+    0.0,
+    0.8010326623916626
+   ],
+   "box_hi": [
+    15.643096923828125,
+    5.357247829437256,
+    1.0,
+    4.397625923156738
+   ],
+   "wall_seconds": 208.02187705039978
+  }
+ ]
+}

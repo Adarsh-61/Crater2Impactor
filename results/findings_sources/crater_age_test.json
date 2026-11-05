@@ -1,0 +1,423 @@
+{
+ "sites": {
+  "CE5": {
+   "area_km2": 22009.9,
+   "ref_age_ga": 2.03,
+   "n_craters_ge1km": 54,
+   "n_1_3km": 47,
+   "n_missing_features": 2,
+   "training_rows": 1468,
+   "training_rows_excluded_near_site": 374,
+   "removed": {
+    "R1": 14,
+    "R2": 7,
+    "R3": 0
+   },
+   "sensitivity_age_all_ge1km_R0": 3.0637675083230973,
+   "R0_none": {
+    "n": 47,
+    "age_ga": 2.7687720222889247,
+    "age_1sigma": [
+     2.3797311719606205,
+     3.059322949419113
+    ],
+    "log10_ratio": 0.13479115996382737
+   },
+   "R1_shape": {
+    "n": 33,
+    "age_ga": 1.95726495281248,
+    "age_1sigma": [
+     1.6166060441543981,
+     2.297289650546166
+    ],
+    "log10_ratio": -0.01584641830743981
+   },
+   "R2_shape_context": {
+    "n": 40,
+    "age_ga": 2.3712457954381994,
+    "age_1sigma": [
+     1.9973034282436286,
+     2.7328001924814855
+    ],
+    "log10_ratio": 0.06748053591725087
+   },
+   "R3_LUC_flag": {
+    "n": 47,
+    "age_ga": 2.7687720222889247,
+    "age_1sigma": [
+     2.3797311719606205,
+     3.059322949419113
+    ],
+    "log10_ratio": 0.13479115996382737
+   },
+   "RR_random_same_count_as_R2": {
+    "mean_abs_log10_ratio": 0.06748053591725088,
+    "p05": 0.06748053591725087,
+    "values_note": "1000 draws"
+   }
+  },
+  "Apollo11": {
+   "area_km2": 13438.3,
+   "ref_age_ga": 3.715,
+   "n_craters_ge1km": 158,
+   "n_1_3km": 155,
+   "n_missing_features": 2,
+   "training_rows": 1129,
+   "training_rows_excluded_near_site": 713,
+   "removed": {
+    "R1": 57,
+    "R2": 94,
+    "R3": 7
+   },
+   "sensitivity_age_all_ge1km_R0": 3.7187566546706856,
+   "R0_none": {
+    "n": 155,
+    "age_ga": 3.715049262195624,
+    "age_1sigma": [
+     3.698602264460565,
+     3.7298691141472577
+    ],
+    "log10_ratio": 5.758858110180901e-06
+   },
+   "R1_shape": {
+    "n": 98,
+    "age_ga": 3.618367111661424,
+    "age_1sigma": [
+     3.592807613299582,
+     3.6402354957159875
+    ],
+    "log10_ratio": -0.011446190763351138
+   },
+   "R2_shape_context": {
+    "n": 61,
+    "age_ga": 3.487546891451399,
+    "age_1sigma": [
+     3.4367877399268103,
+     3.5258568362221325
+    ],
+    "log10_ratio": -0.027438762514098658
+   },
+   "R3_LUC_flag": {
+    "n": 148,
+    "age_ga": 3.7060246486444575,
+    "age_1sigma": [
+     3.6889207375704913,
+     3.7213769402737045
+    ],
+    "log10_ratio": -0.0010505146262151492
+   },
+   "RR_random_same_count_as_R2": {
+    "mean_abs_log10_ratio": 0.027438762514098658,
+    "p05": 0.027438762514098658,
+    "values_note": "1000 draws"
+   }
+  },
+  "Apollo15": {
+   "area_km2": 3530.52,
+   "ref_age_ga": 3.3,
+   "n_craters_ge1km": 27,
+   "n_1_3km": 24,
+   "n_missing_features": 0,
+   "training_rows": 1842,
+   "training_rows_excluded_near_site": 0,
+   "removed": {
+    "R1": 11,
+    "R2": 15,
+    "R3": 0
+   },
+   "sensitivity_age_all_ge1km_R0": 3.62930039246643,
+   "R0_none": {
+    "n": 24,
+    "age_ga": 3.601684485877048,
+    "age_1sigma": [
+     3.5419245339686714,
+     3.6444930877274846
+    ],
+    "log10_ratio": 0.037991725284069355
+   },
+   "R1_shape": {
+    "n": 13,
+    "age_ga": 3.405581876571496,
+    "age_1sigma": [
+     3.176239920967316,
+     3.499354024333761
+    ],
+    "log10_ratio": 0.013677386119611763
+   },
+   "R2_shape_context": {
+    "n": 9,
+    "age_ga": 3.1218689025813555,
+    "age_1sigma": [
+     2.218165232351104,
+     3.365841521764234
+    ],
+    "log10_ratio": -0.02409927820495854
+   },
+   "R3_LUC_flag": {
+    "n": 24,
+    "age_ga": 3.601684485877048,
+    "age_1sigma": [
+     3.5419245339686714,
+     3.6444930877274846
+    ],
+    "log10_ratio": 0.037991725284069355
+   },
+   "RR_random_same_count_as_R2": {
+    "mean_abs_log10_ratio": 0.02409927820495855,
+    "p05": 0.02409927820495854,
+    "values_note": "1000 draws"
+   }
+  },
+  "Apollo17": {
+   "area_km2": 10604.4,
+   "ref_age_ga": 3.775,
+   "n_craters_ge1km": 45,
+   "n_1_3km": 42,
+   "n_missing_features": 0,
+   "training_rows": 1842,
+   "training_rows_excluded_near_site": 0,
+   "removed": {
+    "R1": 11,
+    "R2": 11,
+    "R3": 0
+   },
+   "sensitivity_age_all_ge1km_R0": 3.4637428346916668,
+   "R0_none": {
+    "n": 42,
+    "age_ga": 3.437049681252298,
+    "age_1sigma": [
+     3.3578189850969062,
+     3.4899555205304233
+    ],
+    "log10_ratio": -0.04073114622024596
+   },
+   "R1_shape": {
+    "n": 31,
+    "age_ga": 3.2669833839205213,
+    "age_1sigma": [
+     3.0243113395266596,
+     3.3734955693147897
+    ],
+    "log10_ratio": -0.0627700303327386
+   },
+   "R2_shape_context": {
+    "n": 31,
+    "age_ga": 3.2669833839205213,
+    "age_1sigma": [
+     3.0243113395266596,
+     3.3734955693147897
+    ],
+    "log10_ratio": -0.0627700303327386
+   },
+   "R3_LUC_flag": {
+    "n": 42,
+    "age_ga": 3.437049681252298,
+    "age_1sigma": [
+     3.3578189850969062,
+     3.4899555205304233
+    ],
+    "log10_ratio": -0.04073114622024596
+   },
+   "RR_random_same_count_as_R2": {
+    "mean_abs_log10_ratio": 0.06277003033273862,
+    "p05": 0.0627700303327386,
+    "values_note": "1000 draws"
+   }
+  },
+  "Luna16": {
+   "area_km2": 15445.2,
+   "ref_age_ga": 3.41,
+   "n_craters_ge1km": 63,
+   "n_1_3km": 59,
+   "n_missing_features": 0,
+   "training_rows": 1385,
+   "training_rows_excluded_near_site": 457,
+   "removed": {
+    "R1": 38,
+    "R2": 24,
+    "R3": 0
+   },
+   "sensitivity_age_all_ge1km_R0": 3.4487610270035347,
+   "R0_none": {
+    "n": 59,
+    "age_ga": 3.421916022408086,
+    "age_1sigma": [
+     3.3532996831162545,
+     3.4700233587363645
+    ],
+    "log10_ratio": 0.0015149682779585381
+   },
+   "R1_shape": {
+    "n": 21,
+    "age_ga": 1.7749714183255145,
+    "age_1sigma": [
+     1.3876571933793873,
+     2.1620156771608845
+    ],
+    "log10_ratio": -0.28356301482023094
+   },
+   "R2_shape_context": {
+    "n": 35,
+    "age_ga": 2.9093159355968092,
+    "age_1sigma": [
+     2.455985347871408,
+     3.1710579618312074
+    ],
+    "log10_ratio": -0.06896349320917593
+   },
+   "R3_LUC_flag": {
+    "n": 59,
+    "age_ga": 3.421916022408086,
+    "age_1sigma": [
+     3.3532996831162545,
+     3.4700233587363645
+    ],
+    "log10_ratio": 0.0015149682779585381
+   },
+   "RR_random_same_count_as_R2": {
+    "mean_abs_log10_ratio": 0.06896349320917594,
+    "p05": 0.06896349320917593,
+    "values_note": "1000 draws"
+   }
+  },
+  "Luna24": {
+   "area_km2": 17516.0,
+   "ref_age_ga": 3.22,
+   "n_craters_ge1km": 73,
+   "n_1_3km": 67,
+   "n_missing_features": 5,
+   "training_rows": 1842,
+   "training_rows_excluded_near_site": 0,
+   "removed": {
+    "R1": 7,
+    "R2": 22,
+    "R3": 12
+   },
+   "sensitivity_age_all_ge1km_R0": 3.4570083169136208,
+   "R0_none": {
+    "n": 67,
+    "age_ga": 3.4224921632005962,
+    "age_1sigma": [
+     3.359189746836413,
+     3.467931375148313
+    ],
+    "log10_ratio": 0.02648659066676835
+   },
+   "R1_shape": {
+    "n": 60,
+    "age_ga": 3.3699897609145286,
+    "age_1sigma": [
+     3.2828821774448884,
+     3.4272091148267227
+    ],
+    "log10_ratio": 0.019772709654713838
+   },
+   "R2_shape_context": {
+    "n": 45,
+    "age_ga": 3.1324898708801254,
+    "age_1sigma": [
+     2.8260089147797203,
+     3.2747814154235013
+    ],
+    "log10_ratio": -0.011966196348232401
+   },
+   "R3_LUC_flag": {
+    "n": 55,
+    "age_ga": 3.3189164644106306,
+    "age_1sigma": [
+     3.199132611536021,
+     3.3900574849600993
+    ],
+    "log10_ratio": 0.01314044985948432
+   },
+   "RR_random_same_count_as_R2": {
+    "mean_abs_log10_ratio": 0.011966196348232401,
+    "p05": 0.011966196348232401,
+    "values_note": "1000 draws"
+   }
+  },
+  "Apollo12": {
+   "area_km2": 6088.47,
+   "ref_age_ga": 3.185,
+   "n_craters_ge1km": 31,
+   "n_1_3km": 31,
+   "n_missing_features": 0,
+   "training_rows": 1666,
+   "training_rows_excluded_near_site": 176,
+   "removed": {
+    "R1": 6,
+    "R2": 5,
+    "R3": 0
+   },
+   "sensitivity_age_all_ge1km_R0": 3.5241610127328946,
+   "R0_none": {
+    "n": 31,
+    "age_ga": 3.5241610127328946,
+    "age_1sigma": [
+     3.457866659175404,
+     3.5704768539906224
+    ],
+    "log10_ratio": 0.04394630567476145
+   },
+   "R1_shape": {
+    "n": 25,
+    "age_ga": 3.451334852594955,
+    "age_1sigma": [
+     3.3467350620455876,
+     3.514142640991289
+    ],
+    "log10_ratio": 0.034877660429267605
+   },
+   "R2_shape_context": {
+    "n": 26,
+    "age_ga": 3.466057854989259,
+    "age_1sigma": [
+     3.3711358220533607,
+     3.52511871586415
+    ],
+    "log10_ratio": 0.03672637095433159
+   },
+   "R3_LUC_flag": {
+    "n": 31,
+    "age_ga": 3.5241610127328946,
+    "age_1sigma": [
+     3.457866659175404,
+     3.5704768539906224
+    ],
+    "log10_ratio": 0.04394630567476145
+   },
+   "RR_random_same_count_as_R2": {
+    "mean_abs_log10_ratio": 0.03672637095433159,
+    "p05": 0.03672637095433159,
+    "values_note": "1000 draws"
+   }
+  }
+ },
+ "training_rows_total": 1842,
+ "ecc_training_median": 0.3106455337115,
+ "primary_metric_mean_abs_log10_ratio": {
+  "R0_none": 0.04078109356367732,
+  "R1_shape": 0.06313620148962196,
+  "R2_shape_context": 0.042777809640112366,
+  "R3_LUC_flag": 0.03902375284379459,
+  "RR_random_mean": 0.04277780964011236,
+  "RR_random_p05": 0.042777809640112366
+ },
+ "signed_mean_log10_ratio": {
+  "R0_none": 0.029143623215035615,
+  "R1_shape": -0.043613985431452465,
+  "R2_shape_context": -0.013004407676803097,
+  "R3_LUC_flag": 0.027086135459091422
+ },
+ "sites_improved_vs_R0": {
+  "R1_shape": 4,
+  "R2_shape_context": 4,
+  "R3_LUC_flag": 1
+ },
+ "decision": {
+  "R1_shape": false,
+  "R2_shape_context": false,
+  "R3_LUC_flag": false
+ },
+ "ecc_sites_median": 0.366958988
+}

@@ -1,0 +1,35 @@
+{
+ "resolution_deg": 0.5,
+ "grid_origin": "row 0 = 90N..89.5N, col 0 = 180W..179.5W",
+ "inputs": {
+  "LROC_GLOBAL_MARE_180.ZIP": {
+   "sha256": "a85073f6fe05a0b9b38db6cb1d2f667e51c134517debcd1f3b40fda9a58cde88",
+   "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/EXTRAS/SHAPEFILE/LROC_GLOBAL_MARE/LROC_GLOBAL_MARE_180.ZIP",
+   "n_rings": 4857
+  },
+  "rajsic_regolith_v2.0.0.zip": {
+   "sha256": "bb9f6d985404c971fbf406110fac85124c6647bffd7f0cf65c05abcfae2af523",
+   "url": "https://github.com/mattjsquared/lunar-surface-regolith/archive/refs/tags/v2.0.0.zip",
+   "file_used": "reproduce/data/RegolithData_Literature.xlsx"
+  }
+ },
+ "sources": [
+  "Mare fraction: LROC global mare boundaries (Nelson et al. 2014, LPSC 45, #2861), rasterised at 0.125 deg and averaged to 0.5 deg; documented coverage 65S-65N (a few polygons reach 66.5S).",
+  "Regolith thickness: published point measurements compiled by Rajsic et al. (2026, PSJ) / Jones & Rajsic (2026) v2.0.0 (54 usable rows). The inverse-distance map (k=9, p=2) is stored but NOT used for inference because it failed leave-one-out validation; the engine uses mare/highland geometric means with log-sd 0.59/0.69."
+ ],
+ "cross_validation": {
+  "n_points": 54,
+  "rmse_ln_idw": 0.45058883741492245,
+  "rmse_ln_terrain_mean": 0.3658490841355836,
+  "rmse_ln_global_mean": 0.36632194861653755,
+  "note": "Leave-one-out on log thickness of the 54 literature points. Points cluster at landing sites, so LOO is optimistic for unsampled regions."
+ },
+ "decision": "Use observed mare fraction; use unit-level regolith prior; do not use the interpolated thickness map (it does not beat a constant in LOO).",
+ "mare_area_fraction_65S_65N": 0.1788373049117722,
+ "unit_means_m": {
+  "mare": 4.53168700158131,
+  "highland": 5.253122528622062,
+  "n_mare": 19,
+  "n_highland": 35
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "about": "Lunar impact flashes with an identified new crater. The impactor mass is NOT independently known: it follows from the flash only through an assumed luminous efficiency (eta), and the speed from stream membership or a sporadic population. These pairs test the joint consistency of the crater-scaling law and the flash observation model for natural hypervelocity impactors. Session 8 recorded each source's photometric definition of the luminous energy, because published energies use different bandwidths, isotropy factors and integration windows (see 'photometric_definition'). The engine's flash model works in the 'luminous_range_integrated' definition (Ortiz et al. 2000; Madiedo et al. 2019): energy integrated over the whole flash, f = 2, delta-lambda = 0.5 micron, V-band zero point 3.75e-8 W m-2 um-1. Development use: the engine's upper eta bound 6e-3 was taken from Sheward et al. (2025), whose fit used the 17 Mar 2013, 11 Sep 2013 and 27 Sep 2017 pairs, so these pairs are not fully independent of the flash model. s27 status: the 6e-3 bound is unverified and under review (audit/research/s27/ETA_EVIDENCE.md).",
+ "photometric_definitions": {
+  "luminous_range_integrated": "Sum over all frames of P = 3.75e-8 x 10^(-m_V/2.5) x pi f dlambda R^2 (W) times the frame time, f = 2, dlambda = 0.5 um (Madiedo et al. 2014 eq. 1; Madiedo et al. 2019 eq. 2). Madiedo et al. 2019 state that eta must be defined for the same dlambda and f.",
+  "msfc_peak_frame_R": "Energy in the single brightest video frame from the peak R magnitude: E = f_lambda(R) x 1607 A x 2 pi d^2 x t (Suggs et al. 2014 eqs. 5-6, Bessell zero point). For 17 Mar 2013 the full 1/30 s frame was used although the flash lasted about 1 s (Suggs et al. 2014 sec. 5; Moser et al. 2014). Not the total luminous energy.",
+  "integrated_0.3um": "As luminous_range_integrated but with dlambda = 0.3 um (Sheward et al. 2022 eq. 2)."
+ },
+ "pairs": [
+  {"id": "flash_2013_03_17", "date": "2013-03-17T03:50:54.312Z",
+   "luminous_energy_j": 7.1e6, "photometric_definition": "msfc_peak_frame_R",
+   "luminous_energy_sigma_dex": 0.16, "luminous_energy_note": "peak R = 3.0 +- 0.4 mag in one 1/30 s frame after saturation correction (Suggs et al. 2014 sec. 5; Moser et al. 2014); 0.4 mag = 0.16 dex",
+   "speed_km_s": 25.6, "speed_sigma_rel": 0.12, "speed_note": "Virginid Meteor Complex membership assumed from 5 fireballs the same night (Suggs et al. 2014); spread from the Virginid velocity dispersion 27.3 +- 3.3 km/s (Sheward et al. 2025 Table B.1)",
+   "elev_deg": 56, "elev_sigma_deg": 5, "elev_note": "from fireball orbit measurements (Suggs et al. 2014; Moser et al. 2014); independent of the crater but conditional on stream membership; the 5 deg spread is an assumption",
+   "crater_d_m": 18.0, "crater_sigma_dex": 0.034, "crater_note": "18 m rim-to-rim, 15 m inner (Robinson et al. 2014 LPSC 2164; LROC post 770); 17.6 +- 1.4 m (Sheward et al. 2025)",
+   "ejecta_pattern": "asymmetric", "ejecta_note": "'circular with an asymmetrical ray pattern'; proximal bright ejecta 10-20 m to the SW and < 10 m to the NE; distal zone centred to the NE; no forbidden zone reported (Robinson et al. 2014). Classified before any model run (PREREGISTRATION.md).",
+   "lat": 20.7135, "lon": -24.3302,
+   "published_mass_kg": 16, "published_mass_note": "with eta = 1.5e-3 exp(-(9.3/v)^2) = 1.31e-3 in the MSFC definition; model-dependent",
+   "sources": ["Suggs et al. 2014, Icarus 238, 23, arXiv:1404.6458, sec. 4.3 and 5 (read)", "Moser, Suggs & Suggs 2014, ACM Helsinki abstract (read)", "Robinson et al. 2014, LPSC 45, 2164 (read)", "LROC post 770 (read)", "Sheward et al. 2025, A&A 699, L3 (read)"]},
+  {"id": "flash_2013_09_11", "date": "2013-09-11T20:07:28.68Z",
+   "luminous_energy_j": 1.3e8, "photometric_definition": "luminous_range_integrated",
+   "luminous_energy_sigma_dex": 0.07, "luminous_energy_note": "Madiedo et al. 2014 give the kinetic energy (6.5 +- 1.0)e10 J for an assumed eta = 2e-3, so the radiated energy is 2e-3 x 6.5e10 = 1.3e8 J (+-15%), integrated over the 8.3 s light curve with f = 2 and dlambda = 0.5 um. Madiedo et al. 2019 later note that their eta = 2e-3 was derived with f = 3 and corresponds to 3e-3 for f = 2.",
+   "speed_km_s": null, "speed_note": "no measurement; sporadic origin preferred (Madiedo et al. 2014; Rizos et al. 2025: > 96% sporadic by a rate analysis). The September epsilon-Perseid alternative implies 53.2 km/s.",
+   "elev_deg": null, "elev_note": "no independent value. The SPE radiant would give 51.4 deg (Rizos et al. 2025), but SPE membership has about 3% probability",
+   "crater_d_m": 35.0, "crater_sigma_dex": 0.009,
+   "crater_alternatives": [{"d_m": 30.2, "sigma_dex": 0.013, "source": "Sheward et al. 2025 Table A.1"}, {"d_m": 34.0, "source": "earlier session notes: Speyerer (not re-read in session 8)"}],
+   "crater_note": "35 +- 0.7 m rim-to-rim (37 +- 1 m E-W x 33 +- 1 m N-S), depth 4.9 +- 0.4 m (Rizos et al. 2025); 30.2 +- 0.9 m (Sheward et al. 2025). The two measurements differ by 4.3 sigma; the definitions are not reconciled in either source",
+   "ejecta_pattern": "butterfly", "ejecta_note": "'two forbidden zones and the overall butterfly-shaped pattern' (Rizos et al. 2025 sec. 4)",
+   "lat": -17.16, "lon": -20.41,
+   "sources": ["Madiedo et al. 2014, MNRAS 439, 2364, arXiv:1402.5490 (read in full)", "Rizos et al. 2025, MNRAS 545, arXiv:2511.14442v2 (read in full)", "Sheward et al. 2025, A&A 699, L3 (read in full)", "Madiedo et al. 2019, MNRAS 486, 3380, arXiv:1905.04487 (sec. 3-4 read)"]},
+  {"id": "flash_2017_09_27", "date": "2017-09-27",
+   "luminous_energy_j": 1.3e7, "photometric_definition": "integrated_0.3um",
+   "luminous_energy_sigma_dex": null, "luminous_energy_note": "total Elum 1.3e7 J integrated over the flash, f = 2, dlambda = 300 nm (Sheward et al. 2022 eq. 2); no uncertainty given",
+   "speed_km_s": 27.6, "speed_sigma_rel": 0.11, "speed_note": "Southern Taurid or Southern delta-Piscid stream (VG 26.6 and 28.6 km/s, average 27.6) or sporadic, not resolved (Sheward et al. 2022); 27.6 +- 3.0 km/s (Sheward et al. 2025 Table B.1)",
+   "elev_deg": null, "elev_note": "no published radiant-based angle",
+   "crater_d_m": 23.8, "crater_sigma_dex": 0.024, "crater_note": "23.8 +- 1.3 m (Sheward et al. 2025 Table A.1); rim unresolved in the 2022 images, ejecta-based estimate 27.3-37.7 m (Sheward et al. 2022)",
+   "ejecta_pattern": "uprange_gap", "ejecta_note": "'butterfly ejecta pattern with an up-range exclusion zone ... lack of a down-range exclusion zone' (Sheward et al. 2022); classified as uprange_gap by the pre-registered rule",
+   "lat": 8.0288, "lon": -76.546,
+   "sources": ["Sheward et al. 2022, MNRAS 514, 4320, arXiv:2204.12265 (sec. 5-6 read)", "Sheward et al. 2025 (read)"]},
+  {"id": "flash_2019_01_21", "date": "2019-01-21T04:41:38.09Z",
+   "luminous_energy_j": 1.96e7, "photometric_definition": "luminous_range_integrated",
+   "luminous_energy_sigma_dex": 0.087, "luminous_energy_note": "(1.96 +- 0.39)e7 J, f = 2, dlambda = 0.5 um (Madiedo et al. 2019 sec. 4.1)",
+   "speed_km_s": null, "speed_note": "sporadic (Madiedo et al. 2019; Sheward et al. 2025)",
+   "elev_deg": null,
+   "crater_d_m": null, "crater_candidates": [{"d_m": 3.5, "sigma_dex": 0.087, "lat": -28.3, "lon": -67.1}, {"d_m": 12.0, "sigma_dex": 0.025, "lat": -28.2, "lon": -67.2}],
+   "crater_note": "AMBIGUOUS: two new craters in the same image pairs; Sheward et al. 2025 (App. C) chose the 3.5 m crater because it gives a more typical eta, which is a model-based choice. The 3.5 m candidate is also below the engine's 5 m domain. Not used as a primary test.",
+   "lat": -28.3, "lon": -67.1,
+   "sources": ["Madiedo et al. 2019 (sec. 3-4 read)", "Sheward et al. 2025 App. C (read)"]}
+ ],
+ "excluded": [
+  {"id": "C180905N08.7E052.5", "reason": "crater 3.4 m, below the engine's 5 m domain; NELIOTA blackbody (400-900 nm) luminous energies for two flashes that night not matched to the crater in the sources read; s27: the matching flash is NELIOTA 2018-09-05 01:51:37.4 with a blackbody-integrated Elum of 304,193 J (Avdellidou et al. 2021 Table 3), a definition not convertible with flash.py factors"},
+  {"id": "C091113, C110211, C110511, C140504", "reason": "no published luminous energy (Sheward et al. 2025 App. E), or an approximate one from a peak magnitude only (C110211)"}
+ ]
+}

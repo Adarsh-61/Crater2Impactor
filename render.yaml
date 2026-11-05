@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: crater2impactor-api
+    env: python
+    region: ohio
+    buildCommand: "pip install -e .[serve]"
+    startCommand: "uvicorn app.server_v2:app --host 0.0.0.0 --port $PORT"

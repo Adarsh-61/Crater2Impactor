@@ -1,0 +1,162 @@
+{
+ "generated_utc": "2026-10-27T01:58:57Z",
+ "note": "Curated list of results from the research record; each finding is pinned to its source file by SHA-256 (tests/test_findings_provenance.py).",
+ "findings": [
+  {
+   "id": "compact-inverse",
+   "date": "2026-10-20",
+   "evidence": "Real",
+   "finding": "Re-measuring spacecraft crater rims from LROC images does not improve mass accuracy",
+   "result": "Mass error with speed and angle known: 0.126 dex with published diameters, 0.141 dex with re-measured diameters (n = 11)",
+   "status": "established",
+   "source": {
+    "file": "results/findings_sources/compact_impactor_inverse.json",
+    "sha256": "a19ec81a48759115"
+   }
+  },
+  {
+   "id": "diameter-precision",
+   "date": "2026-10-24",
+   "evidence": "Simulated",
+   "finding": "Crater-diameter precision beyond 0.02 dex barely narrows the mass range",
+   "result": "10 m crater, 90% mass range: 1.64 dex at 0.02 dex diameter error, 1.63 dex at 0.005 dex, 1.97 dex at 0.10 dex",
+   "status": "established (in the model)",
+   "source": {
+    "file": "results/findings_sources/diameter_precision_value.json",
+    "sha256": "ba61ec3a959351bb"
+   }
+  },
+  {
+   "id": "domain-transfer",
+   "date": "2026-10-21",
+   "evidence": "Real and laboratory",
+   "finding": "The scaling-law scatter between independent domains is about 0.065 dex and cannot be reduced below the assumed 0.10 dex",
+   "result": "9 domains (laboratory sands, Ryugu, 4 spacecraft families); between-domain SD 0.065 dex; held-out-domain log score 9.96 (learned) vs 10.26 (fixed 0.10); coverage 7/9",
+   "status": "established",
+   "source": {
+    "file": "results/findings_sources/domain_transfer.json",
+    "sha256": "daa193d759ce9407"
+   }
+  },
+  {
+   "id": "scatter-model",
+   "date": "2026-10-25",
+   "evidence": "Real",
+   "finding": "Automatic detection of new craters in LROC before/after preview images does not work",
+   "result": "40 known new craters: AUROC 0.54 (classical baseline), 0.59 (gradient-orthogonal change), chance 0.50; the pre-set viability bar was 0.75",
+   "status": "negative result",
+   "source": {
+    "file": "results/findings_sources/scatter_model_selection.json",
+    "sha256": "c8ebede00fd6bfc8"
+   }
+  },
+  {
+   "id": "secondary-classifier",
+   "date": "2026-10-25",
+   "evidence": "Real",
+   "finding": "Elongation and shallowness identify secondary craters in the Kepler region",
+   "result": "610 Kepler-region craters, spatially held-out folds: AUROC 0.944, accuracy 0.897 (depth/diameter alone 0.866); one region only",
+   "status": "preliminary",
+   "source": {
+    "file": "results/findings_sources/secondary_classifier.json",
+    "sha256": "8f64bbdb0aaa7c66"
+   }
+  },
+  {
+   "id": "secondary-prior",
+   "date": "2026-10-25",
+   "evidence": "Real labels, simulated impactors",
+   "finding": "Setting the secondary-crater weight from morphometry corrects the mass estimate",
+   "result": "120 craters: mass error 1.54 dex (primaries assumed) vs 0.66 dex (classifier weight); 90% coverage 45% vs 93%",
+   "status": "in-model only; superseded by the region test below",
+   "source": {
+    "file": "results/findings_sources/secondary_prior_value.json",
+    "sha256": "c3ac5dc30c4433f7"
+   }
+  },
+  {
+   "id": "region-transfer",
+   "date": "2026-10-25",
+   "evidence": "Real",
+   "finding": "The secondary-crater classifier does not transfer to another region",
+   "result": "Copernicus secondary field (Singer et al. 2020), 6149 craters of 1-1.5 km: AUROC 0.39 [0.36, 0.42]; secondaries there are deeper than surrounding craters (d/D 0.112 vs 0.084), the opposite of Kepler",
+   "status": "negative result (pre-registered)",
+   "source": {
+    "file": "results/findings_sources/region_transfer.json",
+    "sha256": "b62f6e34d5d9997e"
+   }
+  },
+  {
+   "id": "regolith-context",
+   "date": "2026-10-25",
+   "evidence": "Real labels and crater data; simulated impactors for the mass effect",
+   "finding": "Crater shape plus the surrounding crater population identifies secondaries in regions the model has not seen",
+   "result": "1842 independently labelled craters, 6 held-out regions: AUROC 0.84 [0.82, 0.85], weakest region 0.82 (shape alone 0.72). In the model (160 cases, simulated impactors), mass error 1.30 dex (default) vs 0.94 (context) and 0.97 (shape only)",
+   "status": "classification established; mass gain comes from shape, not context; label circularity unresolved; not in the engine",
+   "source": {
+    "file": "results/findings_sources/regolith_context_test.json",
+    "sha256": "34f954fc674f899b"
+   }
+  },
+  {
+   "id": "crater-age",
+   "date": "2026-10-25",
+   "evidence": "Real",
+   "finding": "Removing classifier-predicted secondaries does not bring crater-count ages closer to radiometric sample ages",
+   "result": "7 sample-return count areas, mean |log age ratio|: 0.041 with no removal, 0.063 (shape), 0.043 (shape + context), 0.039 (catalogue flag)",
+   "status": "negative result (pre-registered)",
+   "source": {
+    "file": "results/findings_sources/crater_age_test.json",
+    "sha256": "b33c4d8f692898c0"
+   }
+  },
+  {
+   "id": "flash-leave-one-out",
+   "date": "2026-10-25",
+   "evidence": "Real (crater diameters, flash photometry); eta, speeds assumption-dependent",
+   "finding": "The flash-to-crater chain predicts held-out crater diameters when luminous efficiency comes from the other pairs",
+   "result": "3 flash-crater pairs, leave-one-pair-out: 3/3 inside the 90% interval, mean |log D error| 0.115 dex (0.165 with the default eta prior)",
+   "status": "consistent, weak evidence (n = 3)",
+   "source": {
+    "file": "results/findings_sources/flash_leave_one_out.json",
+    "sha256": "a53a760a96900119"
+   }
+  },
+  {
+   "id": "flash-efficiency-subsets",
+   "date": "2026-10-26",
+   "evidence": "Real (published data, reconstructed procedure)",
+   "finding": "The published luminous efficiency 6e-3 (Sheward et al. 2025) is driven by two craters below 5 m and by the choice of scaling law",
+   "result": "Reconstruction of their procedure with their plotted Holsapple law: eta 2.2e-03 with all six craters, 5.6e-04 without the two sub-5 m craters, 6.4e-04 with the three in-domain pairs",
+   "status": "established as far as the paper allows; exact statistic unresolved",
+   "source": {
+    "file": "results/findings_sources/flash_efficiency_subsets.json",
+    "sha256": "a369d77655d00f23"
+   }
+  },
+  {
+   "id": "flash-efficiency-population",
+   "date": "2026-10-26",
+   "evidence": "Real (flash rate, bolide flux, LROC new craters); no flash-crater pair used",
+   "finding": "Population rates imply a luminous efficiency about ten times higher than the three flash-crater pairs",
+   "result": "Flash rate vs bolide flux and vs LROC crater production: eta 6.1e-03 (90% 1.5e-03 to 2.5e-02). Predicting the three pairs with it: 1/3 inside the 90% interval, mean log D error -0.33 dex (pairs leave-one-out: 3/3, -0.00)",
+   "status": "unresolved tension; default eta range unchanged",
+   "source": {
+    "file": "results/findings_sources/flash_efficiency_population.json",
+    "sha256": "ee19b3abf9a06623"
+   }
+  },
+  {
+   "id": "mass-prior",
+   "date": "2026-10-27",
+   "evidence": "Simulated (Brown-law truths); spacecraft real",
+   "finding": "A flat log-mass prior overestimates natural-impactor masses; each population now has its own mass prior",
+   "result": "120 synthetic natural craters drawn from the Brown et al. 2002 size distribution: mass bias +0.48 dex and 90% coverage 0.75 with the former flat prior, -0.003 dex and 0.91 with the population prior (b = 0.90); spacecraft keep the flat prior (designed masses)",
+   "status": "adopted as the default (pre-registered); real natural masses cannot be checked",
+   "source": {
+    "file": "results/findings_sources/mass_prior_evaluation.json",
+    "sha256": "cd9d7e15dfbbd459"
+   }
+  }
+ ]
+}

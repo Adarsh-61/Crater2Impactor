@@ -1,0 +1,61 @@
+.chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.chart .gridline {
+  stroke: #e3e9ea;
+  stroke-width: 1;
+}
+
+.chart .axis-line {
+  stroke: #627980;
+  stroke-width: 1;
+}
+
+.chart .tick-label {
+  fill: #55666c;
+  font: 11px var(--mono, "IBM Plex Mono", monospace);
+}
+
+.chart .axis-title {
+  fill: #506069;
+  font: 12px var(--sans, "Instrument Sans", sans-serif);
+  font-weight: 500;
+}
+
+.chart .series {
+  fill: #5e9aae;
+}
+
+.chart .series-line {
+  fill: none;
+  stroke: #1d5e7b;
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.chart .series-line.s2 { stroke: #a16e1a; }
+.chart .series-line.s3 { stroke: #2c735a; }
+.chart .series-line.s4 { stroke: #805f8d; }
+.chart .series-line.s5 { stroke: #b34d4b; }
+
+.chart .pt {
+  fill: #1d5e7b;
+  fill-opacity: 0.38;
+  transition: r 0.15s ease, fill-opacity 0.15s ease;
+}
+
+.chart .pt:hover {
+  fill-opacity: 0.9;
+  r: 4;
+}
+
+.chart .target-line {
+  stroke: #9a6816;
+  stroke-width: 1.4;
+  stroke-dasharray: 4 4;
+}

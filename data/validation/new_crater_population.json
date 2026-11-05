@@ -1,0 +1,22 @@
+{
+ "about": "Inputs for the population-level test (new lunar craters vs impactor flux x crater scaling). Source IDs refer to audit/research/lit_session5/population_rates.md (R01-R26), which records identity, status and reading depth. The survey exposure and counts are DERIVED by digitising the open Fig. 2 of Speyerer et al. (2016, Nature 538, 215; R01); the paper's Methods (paywalled) were not read. Every step of the digitised cumulative curve falls on an integer count under one exposure value, which is the internal-consistency check.",
+ "survey": {
+  "label": "LROC NAC temporal pairs 2009-2015 (Speyerer et al. 2016)",
+  "exposure_km2_yr": 3.32e6, "exposure_rel_uncertainty": 0.02,
+  "completeness_d_m": 7.0,
+  "cumulative_counts": {"7": 34, "8": 26, "9": 22, "10": 16, "12": 7, "14": 3, "17": 2, "40": 1},
+  "source": "R01 Fig. 2 (digitised); population_rates.md table B1 rows 8-10"
+ },
+ "flux": {
+  "label": "Brown et al. (2002) bolide flux, transferred to the Moon",
+  "earth_cumulative_per_yr": "N(>E) = 3.70 E^-0.90, E in kilotons TNT (1 kt = 4.185e12 J)",
+  "a0": 0.5677, "a0_sigma": 0.015, "b0": 0.90, "b0_sigma": 0.03,
+  "velocity_for_mass_conversion_km_s": 20.3,
+  "earth_area_km2": 5.10e8,
+  "earth_to_moon_per_area": 1.58,
+  "normalisation_prior_log10": [-0.6, 0.3],
+  "normalisation_note": "Factor 1/4 (NEOMOD3 finds the D>10 m flux ~4x below the bolide estimate, R12 s5.4) to x2 (luminous-efficiency envelope 5-20%, R06).",
+  "applicable_range_note": "Fit supported for impactor diameters ~1-10 m; 7-40 m lunar craters need ~0.1-0.6 m bodies, so the law is extrapolated. Lunar flash flux at 30 g (Suggs et al. 2014, R08) is within ~30% of the extrapolation.",
+  "source": "R06 p.295 eq. (2) (read in full from an author copy); R09 Table 3 (Earth/Moon per-area 1.58)"
+ }
+}

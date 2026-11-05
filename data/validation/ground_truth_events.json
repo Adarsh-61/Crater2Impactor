@@ -1,0 +1,182 @@
+{
+ "about": "Impacts with independently known impactor mass, speed and angle and a measured crater. Source IDs refer to audit/research/lit_session5/ground_truth_events.md (G01-G25), which records each source's identity, status and reading depth. Angles are elevation above the local horizontal. All lunar cases are hollow, low-speed spacecraft: outside the compact hypervelocity regime that point-source scaling was calibrated for (IMPACTS 2022: 'not ... long rod or penetrator impactors'). Session 7 added development_use (which events influenced any model choice) and morphology notes. The S-IVB crater diameters mix definitions ('roughly 30 m' vs the 29-31.9 x 33.3-38.7 m axes in G09); crater_sigma_rel 0.10 covers the difference.",
+ "events": [
+  {
+   "id": "apollo13_sivb",
+   "label": "Apollo 13 S-IVB",
+   "date": "1970-04-15",
+   "mass_kg": 13911,
+   "mass_note": "from NSSDC energy and speed (G10), agent calculation",
+   "velocity_km_s": 2.58,
+   "elev_deg": 76,
+   "crater_d_m": 30.0,
+   "crater_sigma_rel": 0.1,
+   "crater_note": "'roughly 30 m' (G11 #364); all S-IVB craters 29-31.9 x 33.3-38.7 m (G09)",
+   "lat": -2.555,
+   "lon": -27.8875,
+   "bulk_density_kg_m3": 23,
+   "bulk_density_source": "G09",
+   "quality": "A",
+   "sources": [
+    "G09",
+    "G10",
+    "G11"
+   ],
+   "development_use": "sigma_mf = 0.10 dex was set in session 3 (experiment E1) with knowledge of the S-IVB craters; not fully independent",
+   "morphology_note": "all S-IVB craters 29-31.9 x 33.3-38.7 m (G09): elongated at 69-79 deg elevation, so spacecraft shape, not angle, controls the planform"
+  },
+  {
+   "id": "apollo14_sivb",
+   "label": "Apollo 14 S-IVB",
+   "date": "1971-02-04",
+   "mass_kg": 14016,
+   "velocity_km_s": 2.54,
+   "elev_deg": 69,
+   "crater_d_m": 35.0,
+   "crater_sigma_rel": 0.1,
+   "crater_note": "'about 35 m' (G11 #60)",
+   "lat": -8.181,
+   "lon": -26.0305,
+   "bulk_density_kg_m3": 23,
+   "bulk_density_source": "G09",
+   "quality": "A",
+   "sources": [
+    "G09",
+    "G10",
+    "G11"
+   ],
+   "development_use": "as apollo13_sivb"
+  },
+  {
+   "id": "apollo16_sivb",
+   "label": "Apollo 16 S-IVB",
+   "date": "1972-04-19",
+   "mass_kg": 14100,
+   "mass_note": "13,580-14,690 (G10, speed uncertain)",
+   "velocity_km_s": 2.55,
+   "velocity_sigma_rel": 0.03,
+   "elev_deg": 79,
+   "crater_d_m": 34.6,
+   "crater_sigma_rel": 0.12,
+   "crater_note": "~40 x 30 m elliptical with central mound (G11 #894); geometric mean used",
+   "lat": 1.921,
+   "lon": -24.623,
+   "bulk_density_kg_m3": 23,
+   "bulk_density_source": "G09",
+   "quality": "B",
+   "sources": [
+    "G10",
+    "G11"
+   ],
+   "development_use": "as apollo13_sivb"
+  },
+  {
+   "id": "ranger7",
+   "label": "Ranger 7",
+   "date": "1964-07-31",
+   "mass_kg": 366,
+   "mass_note": "search snippet only (G24)",
+   "velocity_km_s": 2.65,
+   "velocity_sigma_rel": 0.03,
+   "elev_deg": null,
+   "crater_d_m": 14.0,
+   "crater_sigma_rel": 0.1,
+   "crater_note": "14 m (G11 #52)",
+   "lat": -10.634,
+   "lon": -20.677,
+   "quality": "C",
+   "sources": [
+    "G11",
+    "G24"
+   ],
+   "development_use": "not used to set any parameter"
+  },
+  {
+   "id": "lcross",
+   "label": "LCROSS Centaur",
+   "date": "2009-10-09",
+   "mass_kg": 2305,
+   "velocity_km_s": 2.507,
+   "elev_deg": 86,
+   "crater_d_m": 22.0,
+   "crater_sigma_rel": 0.1,
+   "crater_note": "about 22 m (ShadowCam/Mini-RF via G02, G14; definition not seen)",
+   "lat": -84.6796,
+   "lon": -48.7093,
+   "target_note": "permanently shadowed floor of Cabeus; possibly volatile-bearing",
+   "quality": "B",
+   "sources": [
+    "G02",
+    "G12",
+    "G14"
+   ],
+   "development_use": "not used to set any parameter"
+  },
+  {
+   "id": "falcon9_2025_010D",
+   "label": "Falcon 9 second stage 2025-010D",
+   "date": "2026-08-05",
+   "mass_kg": 4400,
+   "mass_range_kg": [
+    3900,
+    4900
+   ],
+   "mass_note": "no authoritative value; 3,900-4,900 kg across sources (G02, G04, G07, G08)",
+   "velocity_km_s": 2.43,
+   "elev_deg": 31,
+   "crater_d_m": 18.0,
+   "crater_sigma_rel": 0.1,
+   "crater_note": "18 m; depth < 3 m (G05, G06); rim-to-rim not confirmed",
+   "lat": 19.4759,
+   "lon": -93.2862,
+   "quality": "B",
+   "sources": [
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06"
+   ],
+   "development_use": "not used to set any parameter; held-out test of the ejecta-pattern angle model (session 7)",
+   "morphology_note": "V-shaped uprange forbidden zone (G05)"
+  },
+  {
+   "id": "grail_a",
+   "label": "GRAIL A (Ebb)",
+   "date": "2012-12-17",
+   "mass_kg": 130,
+   "velocity_km_s": 1.6,
+   "elev_deg": 2,
+   "slope_deg": 23,
+   "crater_d_m": 5.0,
+   "crater_sigma_rel": 0.2,
+   "crater_note": "'about 5 m' (G11 #596); grazing into a 23 deg slope",
+   "lat": 75.6088,
+   "lon": -26.594,
+   "quality": "C",
+   "sources": [
+    "G11"
+   ],
+   "exclude_reason": "grazing (2 deg) impact into a slope: outside point-source validity",
+   "development_use": "excluded"
+  },
+  {
+   "id": "ladee",
+   "label": "LADEE",
+   "date": "2014-04-18",
+   "mass_kg": 248,
+   "velocity_km_s": 1.699,
+   "elev_deg": null,
+   "crater_d_max_m": 3.0,
+   "crater_note": "< 3 m, 'barely resolvable' (G11 #822)",
+   "lat": 11.8494,
+   "lon": -93.2493,
+   "quality": "C",
+   "sources": [
+    "G11"
+   ],
+   "exclude_reason": "upper bound only; low angle not given",
+   "development_use": "excluded"
+  }
+ ]
+}

@@ -1,0 +1,98 @@
+{
+ "gpu_inventory": {
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "device_count": 2,
+  "devices": [
+   "Tesla T4",
+   "Tesla T4"
+  ],
+  "nvidia_smi": "index, name, memory.total [MiB], utilization.gpu [%]\n0, Tesla T4, 15360 MiB, 0 %\n1, Tesla T4, 15360 MiB, 0 %\n"
+ },
+ "world_size": 2,
+ "cfg": {
+  "hidden_dim": 256,
+  "n_blocks": 4,
+  "time_embed_dim": 64,
+  "batch_size": 2048,
+  "max_epochs": 120,
+  "lr": 0.0015,
+  "weight_decay": 1e-05,
+  "patience": 25,
+  "min_epochs": 20,
+  "clip": 5.0,
+  "rk4_steps": 20,
+  "n_test_samples": 2000
+ },
+ "runs": [
+  {
+   "seed": 0,
+   "best_epoch": 118,
+   "sampling_seconds_total": 11.241675853729248,
+   "sampling_ms_per_case_batched64": 175.6511852145195,
+   "latency_ms_single_case_median": 181.28693103790283,
+   "trainable_parameters": 1406740,
+   "box_lo": [
+    -3.292588472366333,
+    2.70412015914917,
+    0.0,
+    0.8010326623916626
+   ],
+   "box_hi": [
+    15.643096923828125,
+    5.357247829437256,
+    1.0,
+    4.397625923156738
+   ],
+   "train_seconds": 1512.2536594867706,
+   "best_val": 0.1318484420577685,
+   "wall_seconds": 1553.6119289398193
+  },
+  {
+   "seed": 1,
+   "best_epoch": 118,
+   "sampling_seconds_total": 11.303738594055176,
+   "sampling_ms_per_case_batched64": 176.62091553211212,
+   "latency_ms_single_case_median": 184.684157371521,
+   "trainable_parameters": 1406740,
+   "box_lo": [
+    -3.292588472366333,
+    2.70412015914917,
+    0.0,
+    0.8010326623916626
+   ],
+   "box_hi": [
+    15.643096923828125,
+    5.357247829437256,
+    1.0,
+    4.397625923156738
+   ],
+   "train_seconds": 1515.2915942668915,
+   "best_val": 0.13186098933219909,
+   "wall_seconds": 1536.7165019512177
+  },
+  {
+   "seed": 2,
+   "best_epoch": 113,
+   "sampling_seconds_total": 11.123477935791016,
+   "sampling_ms_per_case_batched64": 173.80434274673462,
+   "latency_ms_single_case_median": 181.30123615264893,
+   "trainable_parameters": 1406740,
+   "box_lo": [
+    -3.292588472366333,
+    2.70412015914917,
+    0.0,
+    0.8010326623916626
+   ],
+   "box_hi": [
+    15.643096923828125,
+    5.357247829437256,
+    1.0,
+    4.397625923156738
+   ],
+   "train_seconds": 1511.6724982261658,
+   "best_val": 0.13188410152991611,
+   "wall_seconds": 1533.8109197616577
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local environments
+.venv/
+venv/
+.env
+
+# Editors and tools
+.vscode/
+.idea/
+.claude/settings.local.json
+.mcp.json
+
+# Credentials
+kaggle.json
+*.key
+*.pem
+
+# Archived material, local backups and external raw data (see DATA_MANIFEST.md)
+_archive/
+.backups/
+data/lunar/raw/
+Real_data/
+*.zip
+
+# Temporary files
+*.tmp
+*.log
+.ruff_cache/
+
+# Downloaded OT-FMPE v21 data and checkpoints (Kaggle), kept local
+INTERNAL_ONLY/otfmpe_v21/

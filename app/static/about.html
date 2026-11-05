@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Crater2Impactor - Method</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/main.css?v=v42">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="wordmark-wrap">
+        <a href="/" class="wordmark">Crater2Impactor</a>
+        <div class="site-subtitle">Impactor Parameter Estimation from Lunar Impact Craters</div>
+      </div>
+      <nav class="site-nav">
+        <a href="/">Inverse Inference</a>
+        <a href="/explorer">Forward Physics</a>
+        <a href="/model">Validation</a>
+        <a href="/about" class="active">Method</a>
+        <a href="/feedback">Feedback</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">Scientific Methodology</h1>
+      <hr class="page-divider">
+      <p class="page-intro">An overview of the workflow: crater observations, forward impact physics, inverse estimation, and how to interpret the results.</p>
+    </header>
+
+    <section class="doc-section">
+      <h2>1. Observations: Crater Measurements and Geological Setting</h2>
+      <p>Each estimate starts from measurements of a crater made from lunar orbit, such as laser altimetry (LOLA) and high-resolution imagery (LROC). The measurements play different roles.</p>
+      <div class="table-wrap">
+        <table class="scientific-table">
+          <thead>
+            <tr><th>Observation</th><th>Quantities</th><th>Role in the estimate</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Crater size</td>
+              <td>Rim diameter (D<sub>rim</sub>)</td>
+              <td>The measurement that constrains the impactor.</td>
+            </tr>
+            <tr>
+              <td>Crater shape</td>
+              <td>Depth (d), rim height (h<sub>rim</sub>)</td>
+              <td>Indicate how fresh the crater is and test the model's crater shape. In the scaling model they are fixed fractions of the diameter, so they add no information about the impactor.</td>
+            </tr>
+            <tr>
+              <td>Geological setting</td>
+              <td>Coordinates (&phi;, &lambda;), mare or highland</td>
+              <td>Select the rock beneath the surface regolith, using mapped mare boundaries.</td>
+            </tr>
+            <tr>
+              <td>Complex crater features</td>
+              <td>Central peak height, floor diameter</td>
+              <td>Identify craters too large for the simple-crater model (above about 10 km).</td>
+            </tr>
+            <tr>
+              <td>Auxiliary measurements</td>
+              <td>Impact angle, ejecta radius, melt volume</td>
+              <td>A known impact angle constrains the estimate. The ejecta pattern of a fresh crater constrains the angle, but this is provisional: in its one independent check the true angle fell outside the 90% range. Ejecta radius and melt are compared with model expectations only, because no calibrated measurement model exists for them.</td>
+            </tr>
+            <tr>
+              <td>Independent measurements</td>
+              <td>Impact speed, mass or density; impact flash energy</td>
+              <td>When the same impact was observed in other ways, these narrow the estimate directly. A flash energy must be given with its photometric definition, because published values differ in bandwidth and integration time.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="doc-section">
+      <h2>2. Forward Physical Process: Point-Source Scaling</h2>
+      <p>A projectile striking the Moon at several to tens of kilometres per second transfers its energy and momentum into the surface through a shock wave that excavates a crater. Laboratory and explosion experiments show that, far from the impact point, crater size depends on the impactor through a single combination of its size, speed and density (Holsapple and Schmidt 1987; Holsapple 1993). The crater volume follows from three dimensionless groups:</p>
+      <div class="math-display">
+        <div class="math-equation">
+          &pi;<sub>V</sub> = <i>K</i><sub>1</sub> [ &pi;<sub>2</sub> (<i>&rho;</i><sub>t</sub>/<i>&delta;</i>)<sup>(6<i>&nu;</i>&minus;2&minus;<i>&mu;</i>)/3<i>&mu;</i></sup> + <i>K</i><sub>2</sub> (&pi;<sub>3</sub> (<i>&rho;</i><sub>t</sub>/<i>&delta;</i>)<sup>(6<i>&nu;</i>&minus;2)/3<i>&mu;</i></sup>)<sup>(2+<i>&mu;</i>)/2</sup> ]<sup>&minus;3<i>&mu;</i>/(2+<i>&mu;</i>)</sup>
+        </div>
+      </div>
+      <p>Here &pi;<sub>V</sub> = <i>&rho;</i><sub>t</sub><i>V</i>/<i>m</i> is the cratering efficiency, &pi;<sub>2</sub> = <i>g a</i>/<i>U</i><sup>2</sup> measures gravity and &pi;<sub>3</sub> = <i>Y</i>/(<i>&rho;</i><sub>t</sub><i>U</i><sup>2</sup>) measures target strength. <i>a</i>, <i>U</i>, <i>&delta;</i> and <i>m</i> are the impactor radius, speed, density and mass; <i>&rho;</i><sub>t</sub> and <i>Y</i> are the target density and strength; <i>g</i> = 1.62 m/s<sup>2</sup>. The exponent <i>&mu;</i> is about 0.41 for loose regolith and 0.55 for competent rock.</p>
+      <ul class="method-list">
+        <li>Strength regime: small craters stop growing when the shock stresses fall to the target strength.</li>
+        <li>Gravity regime: larger craters stop growing when gravity halts the ejected material.</li>
+      </ul>
+
+      <h3>Scaling Constants and Their Uncertainty</h3>
+      <p>The constants <i>K</i><sub>1</sub>, <i>K</i><sub>2</sub>, <i>&mu;</i> and <i>&nu;</i> are not known exactly. Three published sets are used and compared: the Lunar and Planetary Institute crater calculator (2007), the theory document that accompanies it (Holsapple 2003), and Holsapple's IMPACTS program (2022). Two further uncertainties are carried explicitly: how strongly an oblique impact reduces crater size, and the density exponent <i>&nu;</i> (0.2 to 0.4). The rim diameter is 1.3 times the excavation diameter, 2.2 <i>V</i><sup>1/3</sup>.</p>
+
+      <h3>Regolith or Rock</h3>
+      <p>The lunar surface is covered by a few metres of loose regolith over fractured highland crust or mare basalt. A crater smaller than about four times the regolith thickness forms in the regolith; one larger than about twenty times forms in the rock below (Quaide and Oberbeck 1968; Prieur et al. 2018). In between, the estimate mixes both with extra uncertainty. Regolith thickness averages about 4.5 m on the maria and 5.3 m in the highlands; it is not mapped reliably at individual sites, so these averages are used with a wide spread.</p>
+    </section>
+
+    <section class="doc-section">
+      <h2>3. Inverse Estimation</h2>
+      <p>The forward model gives one crater for each impactor, but a small fast impactor and a large slow one can make the same crater. The inverse problem therefore has many solutions, and the estimate is a probability distribution over all impactors consistent with the measured crater and the stated assumptions.</p>
+
+      <div class="method-diagram-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 140" style="width: 100%; height: auto; display: block;">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#141f23" />
+            </marker>
+          </defs>
+          <g transform="translate(20, 38)">
+            <rect x="0" y="0" width="155" height="64" rx="2" fill="#ffffff" stroke="#141f23" stroke-width="1.4" />
+            <text x="77.5" y="27" style="font-family: var(--sans); font-size: 13px; font-weight: 600;" text-anchor="middle" fill="#141f23">Stated Assumptions</text>
+            <text x="77.5" y="48" style="font-family: var(--serif); font-size: 14px; font-style: italic;" text-anchor="middle" fill="#44545a">p(U, &#948;, &#952;, target)</text>
+          </g>
+          <line x1="175" y1="70" x2="215" y2="70" stroke="#141f23" stroke-width="1.4" marker-end="url(#arrow)" />
+          <g transform="translate(215, 38)">
+            <rect x="0" y="0" width="155" height="64" rx="2" fill="#ffffff" stroke="#141f23" stroke-width="1.4" />
+            <text x="77.5" y="27" style="font-family: var(--sans); font-size: 13px; font-weight: 600;" text-anchor="middle" fill="#141f23">Scaling Law</text>
+            <text x="77.5" y="48" style="font-family: var(--serif); font-size: 14px; font-style: italic;" text-anchor="middle" fill="#44545a">D = f(m, U, &#952;, target)</text>
+          </g>
+          <line x1="370" y1="70" x2="410" y2="70" stroke="#141f23" stroke-width="1.4" marker-end="url(#arrow)" />
+          <g transform="translate(410, 38)">
+            <rect x="0" y="0" width="155" height="64" rx="2" fill="#ffffff" stroke="#141f23" stroke-width="1.4" />
+            <text x="77.5" y="27" style="font-family: var(--sans); font-size: 13px; font-weight: 600;" text-anchor="middle" fill="#141f23">Solve for Mass</text>
+            <text x="77.5" y="48" style="font-family: var(--serif); font-size: 14px; font-style: italic;" text-anchor="middle" fill="#44545a">f(m, &#183;) = D<tspan font-size="10" dy="3">obs</tspan></text>
+          </g>
+          <line x1="565" y1="70" x2="605" y2="70" stroke="#141f23" stroke-width="1.4" marker-end="url(#arrow)" />
+          <g transform="translate(605, 38)">
+            <rect x="0" y="0" width="155" height="64" rx="2" fill="#ffffff" stroke="#141f23" stroke-width="1.4" />
+            <text x="77.5" y="27" style="font-family: var(--sans); font-size: 13px; font-weight: 600;" text-anchor="middle" fill="#141f23">Posterior</text>
+            <text x="77.5" y="48" style="font-family: var(--serif); font-size: 14px; font-style: italic;" text-anchor="middle" fill="#44545a">p(m, U, &#183; | D<tspan font-size="10" dy="3">obs</tspan><tspan dy="-3">)</tspan></text>
+          </g>
+        </svg>
+        <div class="figure-caption">Figure 1: For each set of assumed impact conditions, the impactor mass that reproduces the measured crater is solved numerically; weighting these solutions gives the posterior distribution.</div>
+      </div>
+
+      <p>For each combination of impactor population and scaling constants, many sets of impact conditions (speed, angle, impactor density, target properties) are drawn from the stated assumptions. For each set, the mass that reproduces the measured diameter, allowing for measurement error and the scatter of real craters about the scaling law, is found directly, and the solutions are weighted by probability theory. The only approximation is the finite number of samples. For test craters of 10 m, 120 m and 1.5 km, the mass ranges agree with an independent sampling calculation to within 0.01 dex.</p>
+      <p>The previous version of this application estimated the posterior with a trained neural network (optimal-transport flow matching). The network's assumptions were fixed when it was trained, and it could use only the crater measurements it was trained on. The direct calculation allows the assumptions to be changed and compared for each crater, and accepts independent measurements such as impact speed. A comparison of the two versions is on the Validation page.</p>
+    </section>
+
+    <section class="doc-section">
+      <h2>4. Interpreting Results</h2>
+      <ul class="method-list">
+        <li>Credible ranges: the 90% range contains 90% of the posterior probability under the stated assumptions. It combines the selected scaling constants and impactor populations, but not assumptions that were not selected, and it is not a measurement error.</li>
+        <li>Range across assumptions: shows how far the 90% range moves when the scaling constants and impactor population change. When this is wide, the assumptions matter more than the measurement.</li>
+        <li>Constraint status: constrained means the crater narrows the quantity; depends on assumptions means the stated assumptions move it more than its own uncertainty; not informed means the result equals the assumption.</li>
+        <li>Size and speed trade-off: a crater diameter fixes one combination of mass and speed. The relation shown with the results, mass proportional to speed to the power of about &minus;3&mu;, gives the mass for any assumed speed. Speed, impact angle and impactor density are not informed by a diameter alone.</li>
+        <li>Target material: the probabilities of regolith, fractured crust and mare basalt follow from the crater size, the regolith thickness and the setting. The diameter does not distinguish them.</li>
+      </ul>
+    </section>
+
+    <section class="doc-section">
+      <h2>5. Scope, Assumptions, and Limitations</h2>
+      <ul>
+        <li>Simple craters: the scaling law describes bowl-shaped craters up to about 10 km. Larger craters collapse into complex forms and are outside the model.</li>
+        <li>Impact conditions: the law applies to compact impactors faster than a few km/s at angles less than about 75&deg; from vertical. Secondary craters, made by slow ejecta fragments, fall outside this range; if a crater may be a secondary, its probability should be stated. A classifier using depth and rim ellipticity identified Kepler secondaries about nine times in ten, but in the Copernicus secondary field it ranked craters worse than chance, because young secondaries there are deeper than the older craters around them; crater shape alone therefore does not identify secondaries reliably.</li>
+        <li>Validation: the only lunar impacts with independently known impactors are slow, hollow spacecraft. Agreement with them, with the production rate of new lunar craters and with laboratory craters supports the scaling law, but does not measure the accuracy of estimates for natural impacts. Across nine independent test domains (laboratory sands, the Hayabusa2 crater on Ryugu and four spacecraft families), craters scatter about the law by roughly 0.07 dex, consistent with the 0.10 dex the model assumes; this scatter, not the precision of the crater measurement, limits estimates from a diameter alone.</li>
+        <li>Other planetary bodies: only the Moon is supported. Mars, for example, needs a model of atmospheric entry and break-up of small impactors.</li>
+      </ul>
+    </section>
+
+    <section class="doc-section">
+      <h2>Project &amp; Source Code</h2>
+      <p>Crater2Impactor is an open-source planetary science research project developed by Adarsh Pandey under the guidance of Dr. Suchit Purohit. For research replication and codebase details, visit the <a href="https://github.com/Adarsh-61/Crater2Impactor" target="_blank" rel="noopener noreferrer">GitHub repository</a>.</p>
+    </section>
+  </main>
+</body>
+</html>

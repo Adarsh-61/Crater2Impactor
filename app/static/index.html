@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Crater2Impactor - Inverse Inference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/main.css?v=v40">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="wordmark-wrap">
+        <a href="/" class="wordmark">Crater2Impactor</a>
+        <div class="site-subtitle">Impactor Parameter Estimation from Lunar Impact Craters</div>
+      </div>
+      <nav class="site-nav">
+        <a href="/" class="active">Inverse Inference</a>
+        <a href="/explorer">Forward Physics</a>
+        <a href="/model">Validation</a>
+        <a href="/about">Method</a>
+        <a href="/feedback">Feedback</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">Impactor Parameter Estimation from Lunar Impact Craters</h1>
+      <hr class="page-divider">
+      <p class="page-intro">Enter the dimensions of a lunar crater to estimate the impactor that formed it, together with the uncertainty and the assumptions the estimate depends on.</p>
+    </header>
+
+    <div id="err" class="warnbox" hidden></div>
+
+    <section class="doc-section">
+      <h2>Estimating Impactor Properties from Crater Observations</h2>
+      <p>When an impactor strikes the lunar surface, its energy excavates a crater. If we know the impactor's relevant properties (size, speed, and density), we can estimate the resulting crater dimensions using physical scaling relationships.</p>
+      <p>However, when studying the Moon, we face the opposite problem: we observe a crater and need to figure out what kind of impactor formed it. Because different combinations of an impactor's size and speed can produce the same crater, this "inverse problem" has no single answer. The system calculates the probability distribution of all impactors consistent with the crater and the stated assumptions. The crater diameter fixes a combination of mass and speed; it does not fix the speed, impact angle or impactor density, so those are reported as assumptions unless independent measurements are supplied.</p>
+    </section>
+
+    <section class="doc-section">
+      <h2>Enter Crater Measurements</h2>
+      <div class="document-panel">
+        <div class="preset-toolbar">
+          <span class="preset-label">Example craters:</span>
+          <div class="preset-chips">
+            <button type="button" class="preset-chip" data-rim="22" data-depth="" data-rh="" data-geo="auto" data-lat="-84.68" data-lon="-48.71" data-peakh="" data-floord="" data-ejectar="" data-meltvol="" data-angle="4" data-u="2.507" data-pop="artificial">LCROSS Centaur (22 m, known speed and angle)</button>
+            <button type="button" class="preset-chip" data-rim="35" data-depth="" data-rh="" data-geo="auto" data-lat="-8.18" data-lon="-26.03" data-peakh="" data-floord="" data-ejectar="" data-meltvol="" data-angle="21" data-u="2.54" data-pop="artificial">Apollo 14 S-IVB (35 m, known speed and angle)</button>
+            <button type="button" class="preset-chip" data-rim="18" data-depth="" data-rh="" data-geo="auto" data-lat="19.48" data-lon="-93.29" data-peakh="" data-floord="" data-ejectar="" data-meltvol="" data-angle="59" data-u="2.43" data-pattern="uprange_gap" data-pop="artificial">Falcon 9 stage (18 m, 2026, known speed and angle)</button>
+            <button type="button" class="preset-chip" data-rim="18" data-depth="" data-rh="" data-geo="auto" data-lat="20.71" data-lon="-24.33" data-peakh="" data-floord="" data-ejectar="" data-meltvol="" data-angle="34" data-u="25.6" data-us="12" data-flash="7.1e6" data-fdef="msfc_peak_frame_R" data-fs="0.16" data-pop="meteoroid">Flash crater, 17 Mar 2013 (18 m, flash, stream speed)</button>
+            <button type="button" class="preset-chip" data-rim="35" data-depth="4.9" data-rh="" data-geo="auto" data-lat="-17.16" data-lon="-20.41" data-peakh="" data-floord="" data-ejectar="" data-meltvol="" data-flash="1.3e8" data-fdef="luminous_range_integrated" data-fs="0.07" data-pattern="butterfly" data-pop="meteoroid">Flash crater, 11 Sep 2013 (35 m, flash, butterfly ejecta)</button>
+            <button type="button" class="preset-chip" data-rim="2230" data-depth="540" data-rh="85" data-geo="mare_basalts" data-lat="27.7" data-lon="11.8" data-peakh="" data-floord="" data-ejectar="2800" data-meltvol="">Linn&eacute; (2.23 km, Mare)</button>
+            <button type="button" class="preset-chip" data-rim="241" data-depth="49" data-rh="8.4" data-geo="unconstrained" data-lat="" data-lon="" data-peakh="" data-floord="" data-ejectar="400" data-meltvol="">Simple Bowl (241 m)</button>
+            <button type="button" class="preset-chip" data-rim="6500" data-depth="1350" data-rh="220" data-geo="mare_basalts" data-lat="-0.6" data-lon="24.2" data-peakh="" data-floord="" data-ejectar="8500" data-meltvol="">Moltke (6.5 km, Mare)</button>
+            <button type="button" class="preset-chip" data-rim="500" data-depth="105" data-rh="18" data-geo="highland_megaregolith" data-lat="3.2" data-lon="-23.4" data-peakh="" data-floord="" data-ejectar="750" data-meltvol="">Highland Bowl (500 m)</button>
+            <button type="button" class="preset-chip" data-rim="20900" data-depth="4200" data-rh="1200" data-geo="polar_regolith" data-lat="-89.9" data-lon="0.0" data-peakh="" data-floord="8500" data-ejectar="30000" data-meltvol="1200000000">Shackleton (20.9 km, outside model domain)</button>
+            <button type="button" class="preset-chip" data-rim="85000" data-depth="4800" data-rh="1200" data-peakh="1600" data-floord="41000" data-ejectar="120000" data-meltvol="95000000000" data-geo="highland_megaregolith" data-lat="-43.31" data-lon="-11.36">Tycho (85 km, outside model domain)</button>
+            <button type="button" class="preset-chip" data-rim="93000" data-depth="3800" data-rh="1000" data-peakh="1200" data-floord="46000" data-ejectar="150000" data-meltvol="150000000000" data-geo="mare_basalts" data-lat="9.62" data-lon="-20.08">Copernicus (93 km, outside model domain)</button>
+          </div>
+        </div>
+
+        <div class="panel-grid-2">
+          <div>
+            <form id="f">
+              <div class="form-section-group">
+                <div class="form-section-header">
+                  <h3 class="form-section-title">Primary morphometry</h3>
+                </div>
+                <div class="form-grid-3">
+                  <div class="form-field">
+                    <label for="rim" class="field-label">Rim diameter <span class="unit">(m)</span> <span class="req-mark">*</span></label>
+                    <input type="number" step="any" min="1" max="200000" id="rim" value="2230" required placeholder="2230">
+                  </div>
+                  <div class="form-field">
+                    <label for="depth" class="field-label" title="Used to check crater freshness and the model's crater shape; does not constrain the impactor">Crater depth <span class="unit">(m)</span></label>
+                    <input type="number" step="any" min="0.1" max="25000" id="depth" value="540" placeholder="540">
+                  </div>
+                  <div class="form-field">
+                    <label for="rh" class="field-label" title="Compared with the model's crater shape; does not constrain the impactor">Rim height <span class="unit">(m)</span></label>
+                    <input type="number" step="any" min="0.01" max="10000" id="rh" value="85" placeholder="85">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section-group">
+                <div class="form-section-header">
+                  <h3 class="form-section-title">Target geology &amp; coordinates</h3>
+                  <p style="font-size: 0.76rem; color: #8892b0; margin: 3px 0 0 0;">Sets the rock beneath the surface regolith. Auto reads the mapped mare boundaries at the coordinates.</p>
+                </div>
+                <div class="form-grid-geo">
+                  <div class="form-field field-full">
+                    <label for="geo-setting" class="field-label">Target setting</label>
+                    <select id="geo-setting">
+                      <option value="unconstrained">Unconstrained (global prior)</option>
+                      <option value="auto">Auto (from coordinates)</option>
+                      <option value="mare_basalts">Mare basalt</option>
+                      <option value="highland_megaregolith">Highland crust</option>
+                      <option value="polar_regolith">Polar region (treated as highland crust)</option>
+                    </select>
+                  </div>
+                  <div class="form-field">
+                    <label for="lat" class="field-label" title="Used when the target setting is Auto">Latitude <span class="unit">(&deg;N/S)</span></label>
+                    <input type="number" step="any" min="-90" max="90" id="lat" placeholder="-90 to +90">
+                  </div>
+                  <div class="form-field">
+                    <label for="lon" class="field-label" title="Used when the target setting is Auto">Longitude <span class="unit">(&deg;E/W)</span></label>
+                    <input type="number" step="any" min="-180" max="360" id="lon" placeholder="-180 to +360">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section-group">
+                <div class="form-section-header">
+                  <h3 class="form-section-title">Complex crater features</h3>
+                  <p style="font-size: 0.76rem; color: #8892b0; margin: 3px 0 0 0;">Mark the crater as complex. The scaling model covers simple craters up to about 10 km, so complex craters are reported as outside its domain.</p>
+                </div>
+                <div class="form-grid-2">
+                  <div class="form-field">
+                    <label for="peak-h" class="field-label">Central peak height <span class="unit">(m)</span></label>
+                    <input type="number" step="any" min="0" max="10000" id="peak-h" placeholder="0">
+                  </div>
+                  <div class="form-field">
+                    <label for="floor-d" class="field-label">Floor diameter <span class="unit">(m)</span></label>
+                    <input type="number" step="any" min="1" max="150000" id="floor-d" placeholder="0">
+                  </div>
+                </div>
+              </div>
+
+              <details class="research-accordion" id="research-panel">
+                <summary class="research-summary">
+                  <span>Auxiliary measurements</span>
+                  <span class="accordion-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="research-content">
+                  <p style="font-size: 0.76rem; color: #8892b0; margin: 4px 0 10px 0; line-height: 1.4;">A known impact angle, or the ejecta pattern of a fresh crater, constrains the angle. Ejecta radius and melt volume are compared with the model's expectations but do not constrain the impactor, because no calibrated measurement model exists for them. Blocky ejecta constrains the regolith thickness.</p>
+                  <div class="form-grid-3">
+                    <div class="form-field">
+                      <label for="ejecta-r" class="field-label">Ejecta radius <span class="unit">(m)</span></label>
+                      <input type="number" step="any" min="1" max="500000" id="ejecta-r" placeholder="0">
+                    </div>
+                    <div class="form-field">
+                      <label for="angle" class="field-label" title="Leave empty if unknown; the angle then follows the isotropic prior">Impact angle from vertical <span class="unit">(&deg;)</span></label>
+                      <input type="number" step="any" min="0" max="89.9" id="angle" placeholder="unknown">
+                    </div>
+                    <div class="form-field">
+                      <label for="melt-vol" class="field-label">Melt volume <span class="unit">(m&sup3;)</span></label>
+                      <input type="number" step="any" min="0" id="melt-vol" placeholder="0">
+                    </div>
+                    <div class="form-field field-full">
+                      <label for="ejecta-pattern" class="field-label" title="Fresh craters only. Lunar thresholds: asymmetric ejecta below about 45 degrees elevation, uprange gap below about 25, butterfly ejecta below about 10 (Herrick and Forsberg-Taylor 2003). Rim elongation alone is not used: most elongated lunar craters are elongated for other reasons. Provisional: in the one independent check (17 March 2013 flash crater) the true angle lay outside the 90% interval.">Ejecta pattern</label>
+                      <select id="ejecta-pattern">
+                        <option value="">Not assessed</option>
+                        <option value="symmetric">Symmetric ejecta</option>
+                        <option value="asymmetric">Asymmetric ejecta, no uprange gap</option>
+                        <option value="uprange_gap">Uprange gap in the ejecta (V-shaped)</option>
+                        <option value="butterfly">Butterfly ejecta (gaps uprange and downrange)</option>
+                      </select>
+                    </div>
+                    <div class="form-field">
+                      <label for="rocky" class="field-label" title="Blocky ejecta excavated from below the regolith; constrains the regolith thickness (fitted on 346 LROC craters, Rajsic et al. 2026)">Blocky ejecta at the rim</label>
+                      <select id="rocky">
+                        <option value="">Not assessed</option>
+                        <option value="true">Present</option>
+                        <option value="false">Absent</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="research-accordion" id="assumption-panel">
+                <summary class="research-summary">
+                  <span>Model assumptions</span>
+                  <span class="accordion-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="research-content">
+                  <p style="font-size: 0.76rem; color: #8892b0; margin: 4px 0 10px 0; line-height: 1.4;">The results are conditional on these choices. The table reports how far the answer moves across the selected scaling constants and impactor populations.</p>
+                  <div class="form-grid-3">
+                    <div class="form-field">
+                      <label for="sd" class="field-label">Diameter uncertainty <span class="unit">(1&sigma;, %)</span></label>
+                      <input type="number" step="any" min="0" max="100" id="sd" value="7">
+                    </div>
+                    <div class="form-field">
+                      <label for="pop" class="field-label">Impactor population</label>
+                      <select id="pop">
+                        <option value="asteroidal">Asteroidal (near-Earth objects)</option>
+                        <option value="meteoroid">Sporadic meteoroids</option>
+                        <option value="both">Both, equal weight</option>
+                        <option value="artificial">Spacecraft or rocket stage (known artificial impact)</option>
+                        <option value="artificial_calibrated">Spacecraft or rocket stage, scatter calibrated on 11 lunar spacecraft craters</option>
+                      </select>
+                    </div>
+                    <div class="form-field">
+                      <label for="psec" class="field-label" title="Secondary craters are made by slow ejecta fragments from larger impacts">Probability of a secondary crater <span class="unit">(%)</span></label>
+                      <input type="number" step="any" min="0" max="100" id="psec" value="0">
+                    </div>
+                  </div>
+                  <div class="form-grid-3">
+                    <div class="form-field">
+                      <label for="smf" class="field-label" title="Scatter of real craters about the scaling law">Scaling-law scatter <span class="unit">(dex)</span></label>
+                      <input type="number" step="any" min="0" max="1" id="smf" value="0.10">
+                    </div>
+                    <div class="form-field">
+                      <label for="mb" class="field-label">Impactor mass prior</label>
+                      <select id="mb">
+                        <option value="" selected>Population default (power law for natural impactors)</option>
+                        <option value="0">Uniform in log mass</option>
+                        <option value="0.9">Power law (bolide flux slope)</option>
+                      </select>
+                    </div>
+                    <div class="form-field">
+                      <label class="field-label">Scaling constants</label>
+                      <div id="pkgs" class="pkg-list"></div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="research-accordion" id="event-panel">
+                <summary class="research-summary">
+                  <span>Independent measurements of the same impact</span>
+                  <span class="accordion-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="research-content">
+                  <p style="font-size: 0.76rem; color: #8892b0; margin: 4px 0 10px 0; line-height: 1.4;">Use only values measured independently of the crater, for example from tracking, a meteor stream or an impact flash.</p>
+                  <div class="form-grid-3">
+                    <div class="form-field">
+                      <label for="ev-u" class="field-label">Impact speed <span class="unit">(km/s)</span></label>
+                      <input type="number" step="any" min="0.1" max="80" id="ev-u" placeholder="unknown">
+                    </div>
+                    <div class="form-field">
+                      <label for="ev-us" class="field-label">Speed uncertainty <span class="unit">(%)</span></label>
+                      <input type="number" step="any" min="0.1" max="100" id="ev-us" value="10">
+                    </div>
+                    <div class="form-field">
+                      <label for="ev-rho" class="field-label">Impactor density <span class="unit">(kg/m&sup3;)</span></label>
+                      <input type="number" step="any" min="1" max="25000" id="ev-rho" placeholder="unknown">
+                    </div>
+                  </div>
+                  <div class="form-grid-3">
+                    <div class="form-field">
+                      <label for="ev-m" class="field-label">Impactor mass <span class="unit">(kg)</span></label>
+                      <input type="number" step="any" min="0" id="ev-m" placeholder="unknown">
+                    </div>
+                    <div class="form-field">
+                      <label for="ev-ms" class="field-label">Mass uncertainty <span class="unit">(dex)</span></label>
+                      <input type="number" step="any" min="0.01" max="3" id="ev-ms" value="0.1">
+                    </div>
+                    <div class="form-field">
+                      <label for="ev-f" class="field-label" title="Luminous energy of the impact flash; converted to kinetic energy with a luminous efficiency between 0.0005 and 0.006">Impact flash energy <span class="unit">(J)</span></label>
+                      <input type="number" step="any" min="0" id="ev-f" placeholder="unknown">
+                    </div>
+                  </div>
+                  <div class="form-grid-3">
+                    <div class="form-field" style="grid-column: span 2;">
+                      <label for="ev-fdef" class="field-label" title="Published flash energies use different bandwidths and integration windows; the luminous efficiency only applies to the definition it was measured with">Flash energy definition</label>
+                      <select id="ev-fdef">
+                        <option value="luminous_range_integrated">Whole flash, 0.5 &micro;m luminous range (Madiedo, Ortiz)</option>
+                        <option value="msfc_peak_frame_R">Brightest video frame, R band (NASA MSFC, Suggs et al. 2014)</option>
+                        <option value="integrated_0.3um">Whole flash, 0.3 &micro;m bandwidth (Sheward et al. 2022)</option>
+                      </select>
+                    </div>
+                    <div class="form-field">
+                      <label for="ev-fs" class="field-label">Flash energy uncertainty <span class="unit">(dex)</span></label>
+                      <input type="number" step="any" min="0.01" max="2" id="ev-fs" value="0.15">
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <button type="submit" class="btn-submit" id="run" style="margin-top: 18px;">
+                <span>Estimate impact parameters</span>
+              </button>
+            </form>
+          </div>
+
+          <div class="profile-panel">
+            <div class="profile-header">
+              <h3 class="form-section-title">Crater cross-section preview</h3>
+            </div>
+            <div id="input-profile" class="chart" style="width: 100%;"></div>
+            <div id="input-profile-note" class="figure-caption"></div>
+
+            <div class="live-morph-card">
+              <div class="live-morph-header">Observed Morphology Summary</div>
+              <div class="diag-item">
+                <span class="diag-label">Depth / diameter ratio (d/D)</span>
+                <span class="diag-val" id="live-ratio">0.242</span>
+              </div>
+              <div class="diag-item">
+                <span class="diag-label">Morphological regime</span>
+                <span class="diag-val" id="live-regime">Simple parabolic bowl</span>
+              </div>
+              <div class="diag-item">
+                <span class="diag-label">Target geological prior</span>
+                <span class="diag-val" id="live-geo">Mare Basalts (~3050 kg/m&sup3;)</span>
+              </div>
+              <div class="diag-item">
+                <span class="diag-label">Excavation mechanics</span>
+                <span class="diag-val" id="live-status">Gravity-governed excavation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="out" class="doc-section results-section" hidden>
+      <h2>Inference Results</h2>
+      
+      <div class="inference-summary-block">
+        <div class="status-header">
+          <div id="decision-tag"></div>
+          <div id="verdict-notes" class="status-subtitle"></div>
+        </div>
+        <div id="warn" class="verdict-warning" hidden></div>
+        <div class="verdict-narrative-lead">
+          <span class="verdict-lead-arrow" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <polyline points="13 5 21 12 13 19"></polyline>
+            </svg>
+          </span>
+          <p id="verdict-sentence" class="verdict-sentence"></p>
+        </div>
+        <div class="result-transition-arrow" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="8" y1="2" x2="8" y2="14"></line>
+            <polyline points="4 10 8 14 12 10"></polyline>
+          </svg>
+        </div>
+      </div>
+
+      <div class="inference-columns">
+        <div>
+          <h3>Posterior Parameter Estimates</h3>
+          <p class="section-subtext">Credible ranges under the stated assumptions. The second line of each range shows how far it moves across the selected scaling constants and impactor populations.</p>
+          <div class="table-wrap">
+            <table class="scientific-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Constraint Status</th>
+                  <th class="numeric">Median</th>
+                  <th class="numeric">90% Credible Range</th>
+                  <th style="min-width:70px;">Position in Prior Range</th>
+                </tr>
+              </thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h3>Target Geology Classification</h3>
+          <p class="section-subtext">Probability that the crater formed in each target material.</p>
+          <div id="classes" class="classes-panel"></div>
+          <p id="classes-note" class="figure-caption" style="margin-top:10px;text-align:left;"></p>
+        </div>
+      </div>
+
+      <div id="diagnostics-section" class="diagnostics-section" style="margin-top: 36px;">
+        <h3>Observables &amp; Geological Diagnostics</h3>
+        <p class="section-subtext">Entered measurements compared with fresh lunar craters and with the model's expectations, and the target context used.</p>
+        <div id="measurements-line" class="meta-subtext" style="font-size: 13.5px; color: var(--ink); margin-bottom: 12px;"></div>
+        <div id="diagnostics-deck" class="diagnostics-deck" style="margin-top: 14px;">
+          <div class="ledger-column">
+            <h4>Standard morphometry</h4>
+            <div id="diag-morph"></div>
+          </div>
+          <div class="ledger-column">
+            <h4>Geological context</h4>
+            <div id="diag-geo"></div>
+          </div>
+          <div class="ledger-column">
+            <h4>Complex and auxiliary measurements</h4>
+            <div id="diag-research"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="histograms-section">
+        <h3>Marginal Posterior Probability Distributions</h3>
+        <p class="section-subtext">One-dimensional posterior distributions. The dashed outline shows the assumed prior; where the two coincide, the crater carries no information about that quantity.</p>
+        <div class="charts-grid-3">
+          <div class="chart-panel">
+            <h4>Impactor diameter</h4>
+            <div id="hist-logDp" class="chart"></div>
+          </div>
+          <div class="chart-panel">
+            <h4>Impact velocity</h4>
+            <div id="hist-logU" class="chart"></div>
+          </div>
+          <div class="chart-panel">
+            <h4>Impactor density</h4>
+            <div id="hist-logDelta" class="chart"></div>
+          </div>
+        </div>
+        <div class="charts-grid-2">
+          <div class="chart-panel">
+            <h4>Target strength</h4>
+            <div id="hist-logY" class="chart"></div>
+          </div>
+          <div class="chart-panel">
+            <h4>Target density</h4>
+            <div id="hist-logRhoT" class="chart"></div>
+          </div>
+        </div>
+        <div class="charts-grid-2">
+          <div class="chart-panel">
+            <h4>Impactor mass</h4>
+            <div id="hist-logM" class="chart"></div>
+          </div>
+          <div class="chart-panel">
+            <h4>Kinetic energy</h4>
+            <div id="hist-logE" class="chart"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="charts-grid-2">
+        <div class="chart-panel">
+          <h3>Size vs. Speed Trade-Off</h3>
+          <p id="corr-note"></p>
+          <div id="scatter" class="chart"></div>
+        </div>
+        <div class="chart-panel">
+          <h3>Reconstructed Crater Profiles</h3>
+          <p id="profiles-note">Cross-sections of craters predicted from sampled posterior impactors, using the model's fresh-crater shape.</p>
+          <div id="profiles" class="chart"></div>
+        </div>
+      </div>
+
+      <div id="invariant-card" class="math-block" hidden>
+        <h3 class="math-block-title">What the Crater Determines</h3>
+        <p class="section-subtext" style="margin-bottom: 6px;">The posterior impactors lie close to a curve relating mass to speed. If the speed were known, the mass would follow from it:</p>
+        <div class="math-display">
+          <div id="invariant-formula" class="math-equation"></div>
+        </div>
+        <div id="degradation-note" class="math-caption"></div>
+      </div>
+
+      <div id="sensitivity-section" class="histograms-section">
+        <h3>Sensitivity to Assumptions</h3>
+        <p class="section-subtext">Impactor mass under each combination of impactor population and scaling constants, with the weight the observations give each combination, and the main sources of the remaining uncertainty.</p>
+        <div class="inference-columns">
+          <div class="table-wrap">
+            <table class="scientific-table">
+              <thead><tr><th>Population</th><th>Scaling constants</th><th class="numeric">Weight</th><th class="numeric">Median mass</th><th class="numeric">90% Range</th></tr></thead>
+              <tbody id="scenario-rows"></tbody>
+            </table>
+          </div>
+          <div class="table-wrap">
+            <table class="scientific-table">
+              <thead><tr><th>Source of uncertainty in log mass</th><th class="numeric">Share of variance</th></tr></thead>
+              <tbody id="budget-rows"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-footer">
+        <span id="meta-line"></span>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/static/js/infer.js?v=v47"></script>
+</body>
+</html>

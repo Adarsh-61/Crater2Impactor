@@ -1,0 +1,13 @@
+{
+ "cpu": "12th Gen Intel(R) Core(TM) i5-1235U",
+ "logical_cpus": 12,
+ "n_cases": 10,
+ "torch": "2.14.0+cu130",
+ "otfmpe_cpu_1_threads_ms_median": 5626.6611734936305,
+ "otfmpe_cpu_12_threads_ms_median": 3404.185568499088,
+ "engine_cpu_1_process_ms_median": 243.95334699875093,
+ "settings": {
+  "engine": "infer_crater defaults: 30,000 draws x 3 packages, backend auto",
+  "otfmpe": "2000 samples, 20 RK4 steps, one case per call"
+ }
+}

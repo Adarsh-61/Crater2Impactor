@@ -1,0 +1,273 @@
+{
+ "about": "Lunar artificial impacts with independently known impactor mass, speed and elevation and a measured crater (built by audit/research/experiments/s40i/build_spacecraft_impacts.py from the pre-registered session-10 anchor set; sources per event in 'source', reading depth in audit/research/lit_s10/artificial_impacts_sources.md). All are hollow, slow (1.6-2.9 km/s) spacecraft: outside the compact hypervelocity regime of point-source scaling. 'held_out' is true only for events that no session had examined before the test was run.",
+ "events": [
+  {
+   "id": "apollo13_sivb",
+   "label": "Apollo 13 S-IVB",
+   "mass_kg": 13911,
+   "mass_range_kg": null,
+   "velocity_km_s": 2.58,
+   "elev_deg": 76,
+   "crater_d_m": 31.07,
+   "crater_sigma_rel": 0.1069,
+   "crater_values_m": [
+    30.0,
+    32.18695387886216
+   ],
+   "lat": -2.555,
+   "lon": -27.8875,
+   "cluster": "sivb",
+   "quality": "A",
+   "source": "ground_truth_events.json + LROC featured site (s10)",
+   "velocity_sigma_rel": 0.02,
+   "elev_sigma_deg": 3.0,
+   "development_use": "sigma_mf = 0.10 dex was set in session 3 (experiment E1) with knowledge of this crater. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+   "bulk_density_kg_m3": 23,
+   "bulk_density_source": "G09",
+   "held_out": false
+  },
+  {
+   "id": "apollo14_sivb",
+   "label": "Apollo 14 S-IVB",
+   "mass_kg": 14016,
+   "mass_range_kg": null,
+   "velocity_km_s": 2.54,
+   "elev_deg": 69,
+   "crater_d_m": 32.4,
+   "crater_sigma_rel": 0.1304,
+   "crater_values_m": [
+    35.0,
+    30.0
+   ],
+   "lat": -8.181,
+   "lon": -26.0305,
+   "cluster": "sivb",
+   "quality": "A",
+   "source": "ground_truth_events.json + LROC featured site (s10)",
+   "velocity_sigma_rel": 0.02,
+   "elev_sigma_deg": 3.0,
+   "development_use": "sigma_mf = 0.10 dex was set in session 3 (experiment E1) with knowledge of this crater. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+   "bulk_density_kg_m3": 23,
+   "bulk_density_source": "G09",
+   "held_out": false
+  },
+  {
+   "id": "apollo16_sivb",
+   "label": "Apollo 16 S-IVB",
+   "mass_kg": 14100,
+   "mass_range_kg": null,
+   "velocity_km_s": 2.55,
+   "elev_deg": 79,
+   "crater_d_m": 34.6,
+   "crater_sigma_rel": 0.12,
+   "crater_values_m": [
+    34.6
+   ],
+   "lat": 1.921,
+   "lon": -24.623,
+   "cluster": "sivb",
+   "quality": "B",
+   "source": "ground_truth_events.json",
+   "velocity_sigma_rel": 0.02,
+   "elev_sigma_deg": 3.0,
+   "development_use": "sigma_mf = 0.10 dex was set in session 3 (experiment E1) with knowledge of this crater. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+   "bulk_density_kg_m3": 23,
+   "bulk_density_source": "G09",
+   "held_out": false
+  },
+  {
+   "id": "apollo15_sivb",
+   "label": "Apollo 15 S-IVB",
+   "mass_kg": 13851,
+   "mass_range_kg": null,
+   "velocity_km_s": 2.58,
+   "elev_deg": 62,
+   "crater_d_m": 36.99,
+   "crater_sigma_rel": 0.1,
+   "crater_values_m": [
+    36.98648401781386
+   ],
+   "lat": -1.2897,
+   "lon": -11.8245,
+   "cluster": "sivb",
+   "quality": "A",
+   "source": "lit_s10 compilation: NSSDC energy and speed, LROC featured site",
+   "velocity_sigma_rel": 0.02,
+   "elev_sigma_deg": 3.0,
+   "development_use": "new in session 10; no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+   "bulk_density_kg_m3": 23,
+   "bulk_density_source": "G09 (same S-IVB design)",
+   "held_out": false
+  },
+  {
+   "id": "apollo17_sivb",
+   "label": "Apollo 17 S-IVB",
+   "mass_kg": 14487,
+   "mass_range_kg": null,
+   "velocity_km_s": 2.55,
+   "elev_deg": 55,
+   "crater_d_m": 31.0,
+   "crater_sigma_rel": 0.1,
+   "crater_values_m": [
+    31.0
+   ],
+   "lat": -4.1681,
+   "lon": -12.330699999999979,
+   "cluster": "sivb",
+   "quality": "A",
+   "source": "lit_s10 compilation: NSSDC energy and speed, LROC featured site",
+   "velocity_sigma_rel": 0.02,
+   "elev_sigma_deg": 3.0,
+   "development_use": "new in session 10; no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+   "bulk_density_kg_m3": 23,
+   "bulk_density_source": "G09 (same S-IVB design)",
+   "held_out": false
+  },
+  {
+   "id": "ranger7",
+   "label": "Ranger 7",
+   "mass_kg": 367.2,
+   "mass_range_kg": null,
+   "velocity_km_s": 2.616,
+   "elev_deg": 64.1,
+   "crater_d_m": 13.49,
+   "crater_sigma_rel": 0.1077,
+   "crater_values_m": [
+    13.0,
+    14.0
+   ],
+   "lat": -10.634,
+   "lon": -20.67700000000002,
+   "cluster": "ranger",
+   "quality": "A",
+   "source": "JPL TR 32-700; LROC featured site 21 and post 52",
+   "velocity_sigma_rel": 0.02,
+   "elev_sigma_deg": 3.0,
+   "development_use": "no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+   "held_out": false
+  },
+  {
+   "id": "ranger6",
+   "label": "Ranger 6",
+   "mass_kg": 381,
+   "mass_range_kg": null,
+   "velocity_km_s": 2.66,
+   "elev_deg": 48.49,
+   "crater_d_m": 14.0,
+   "crater_sigma_rel": 0.1,
+   "crater_values_m": [
+    14.0
+   ],
+   "lat": 9.3864,
+   "lon": 21.4806,
+   "cluster": "ranger",
+   "quality": "B",
+   "source": "lit_s10 compilation: JPL mission reports, LROC featured sites",
+   "velocity_sigma_rel": 0.02,
+   "elev_sigma_deg": 3.0,
+   "development_use": "new in session 10; no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+   "held_out": false
+  },
+  {
+   "id": "ranger8",
+   "label": "Ranger 8",
+   "mass_kg": 368.4,
+   "mass_range_kg": null,
+   "velocity_km_s": 2.651,
+   "elev_deg": 41.7,
+   "crater_d_m": 12.0,
+   "crater_sigma_rel": 0.1,
+   "crater_values_m": [
+    12.0
+   ],
+   "lat": 2.6377,
+   "lon": 24.788,
+   "cluster": "ranger",
+   "quality": "A",
+   "source": "lit_s10 compilation: JPL mission reports, LROC featured sites",
+   "velocity_sigma_rel": 0.02,
+   "elev_sigma_deg": 3.0,
+   "development_use": "new in session 10; no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+   "held_out": false
+  },
+  {
+   "id": "ranger9",
+   "label": "Ranger 9",
+   "mass_kg": 368.0,
+   "mass_range_kg": null,
+   "velocity_km_s": 2.671,
+   "elev_deg": 64.9,
+   "crater_d_m": 14.0,
+   "crater_sigma_rel": 0.1,
+   "crater_values_m": [
+    14.0
+   ],
+   "lat": -12.8281,
+   "lon": -2.38839999999999,
+   "cluster": "ranger",
+   "quality": "A",
+   "source": "lit_s10 compilation: JPL mission reports, LROC featured sites",
+   "velocity_sigma_rel": 0.02,
+   "elev_sigma_deg": 3.0,
+   "development_use": "new in session 10; no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+   "held_out": false
+  },
+  {
+   "id": "lcross",
+   "label": "LCROSS Centaur",
+   "mass_kg": 2271.61,
+   "mass_range_kg": null,
+   "velocity_km_s": 2.507,
+   "elev_deg": 86,
+   "crater_d_m": 22.0,
+   "crater_sigma_rel": 0.1,
+   "crater_values_m": [
+    22.0
+   ],
+   "lat": -84.6796,
+   "lon": -48.7093,
+   "cluster": "lcross",
+   "quality": "B",
+   "source": "ground_truth_events.json; mass: Marshall et al. 2011 (separation mass, flight data), s40i",
+   "velocity_sigma_rel": 0.02,
+   "elev_sigma_deg": 3.0,
+   "development_use": "no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+   "held_out": false
+  },
+  {
+   "id": "falcon9_2025_010D",
+   "label": "Falcon 9 second stage 2025-010D",
+   "mass_kg": 4400,
+   "mass_range_kg": [
+    3900,
+    4900
+   ],
+   "velocity_km_s": 2.43,
+   "elev_deg": 31,
+   "crater_d_m": 18.0,
+   "crater_sigma_rel": 0.1,
+   "crater_values_m": [
+    18.0
+   ],
+   "lat": 19.4759,
+   "lon": -93.2862,
+   "cluster": "falcon9_2025_010D",
+   "quality": "B",
+   "source": "ground_truth_events.json",
+   "velocity_sigma_rel": 0.02,
+   "elev_sigma_deg": 3.0,
+   "development_use": "no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+   "held_out": false
+  }
+ ],
+ "excluded": [
+  {
+   "id": "grail_a",
+   "reason": "grazing (2 deg) impact into a slope: outside point-source validity"
+  },
+  {
+   "id": "ladee",
+   "reason": "upper bound only; low angle not given"
+  }
+ ]
+}

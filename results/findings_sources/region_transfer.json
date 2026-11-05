@@ -1,0 +1,57 @@
+{
+ "matching": {
+  "wang_rows": 24759,
+  "matched_robbins": 15240
+ },
+ "singer_copernicus": 4565,
+ "in_hull_matched": 10854,
+ "primary_1.0-1.5km": {
+  "n": 6149,
+  "n_pos": 422,
+  "auroc": 0.3897138109412718,
+  "auroc_ci95": [
+   0.3646576151089925,
+   0.41615462142777243
+  ],
+  "accuracy": 0.43812001951536833,
+  "ece": 0.49045095057356425,
+  "mean_p_pos": 0.41835735658826023,
+  "mean_p_neg": 0.5520642176803325,
+  "median_dD_pos": 0.11184277804962861,
+  "median_dD_neg": 0.0843755833488893,
+  "median_ell_pos": 1.105435,
+  "median_ell_neg": 1.10742
+ },
+ "secondary_1.5-5km_extrapolation": {
+  "n": 4574,
+  "n_pos": 421,
+  "auroc": 0.38496053278029846,
+  "auroc_ci95": [
+   0.3569120373376125,
+   0.4133170936729245
+  ],
+  "accuracy": 0.595102754700481,
+  "ece": 0.36880937984688905,
+  "mean_p_pos": 0.25665302557196545,
+  "mean_p_neg": 0.39435841420834417,
+  "median_dD_pos": 0.12878568533209797,
+  "median_dD_neg": 0.08982227922315868,
+  "median_ell_pos": 1.12974,
+  "median_ell_neg": 1.1113
+ },
+ "diagnostic_kepler_measurement_shift": {
+  "n_training_ge_1km": 114,
+  "n_matched": 35,
+  "median_delta_dD": -0.0006455466505368157,
+  "iqr_delta_dD": [
+   -0.00667937646428058,
+   0.002178145910056002
+  ],
+  "median_delta_ell": -0.012510000000000021,
+  "iqr_delta_ell": [
+   -0.056335000000000135,
+   0.015490000000000004
+  ]
+ },
+ "verdict": "does not transfer"
+}

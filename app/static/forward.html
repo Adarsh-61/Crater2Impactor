@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Crater2Impactor - Forward Physics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/main.css?v=v42">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="wordmark-wrap">
+        <a href="/" class="wordmark">Crater2Impactor</a>
+        <div class="site-subtitle">Impactor Parameter Estimation from Lunar Impact Craters</div>
+      </div>
+      <nav class="site-nav">
+        <a href="/">Inverse Inference</a>
+        <a href="/explorer" class="active">Forward Physics</a>
+        <a href="/model">Validation</a>
+        <a href="/about">Method</a>
+        <a href="/feedback">Feedback</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">Forward Physics Explorer</h1>
+      <hr class="page-divider">
+      <p class="page-intro">Evaluate the scaling equations used to calculate crater dimensions directly from known impactor parameters.</p>
+    </header>
+
+    <section class="doc-section">
+      <h2>Analytical Forward Cratering Mechanics</h2>
+      <p>The forward model predicts the dimensions and energy of a lunar crater based on the impactor's initial conditions. The physics is governed by point-source scaling theory and dimensionless "Pi-groups", which were derived from decades of laboratory impact experiments and explosion data. The same equations are used by the inverse estimate.</p>
+      <p>By varying the parameters below, you can observe how an impactor's size, speed, and the lunar material's strength affect the final crater, and see how the process transitions from the strength-dominated regime (small craters) to the gravity-dominated regime (large craters).</p>
+    </section>
+
+    <div class="document-panel">
+      <div id="err" class="warnbox" hidden></div>
+      <div class="panel-grid-2">
+        <div>
+          <h3 style="margin-top: 0; margin-bottom: 14px;">Impactor &amp; Target Properties</h3>
+          <form>
+            <div class="form-grid-3">
+              <div class="form-field">
+                <label for="dia" class="field-label">Impactor diameter <span class="unit">(m)</span></label>
+                <input type="number" step="any" min="1" max="50000" id="dia" value="30">
+              </div>
+              <div class="form-field">
+                <label for="vel" class="field-label">Impact speed <span class="unit">(km/s)</span></label>
+                <input type="number" step="any" min="1" max="100" id="vel" value="18">
+              </div>
+              <div class="form-field">
+                <label for="den" class="field-label">Impactor density <span class="unit">(kg/m&sup3;)</span></label>
+                <input type="number" step="any" min="500" max="9000" id="den" value="3000">
+              </div>
+            </div>
+            <div class="form-grid-3">
+              <div class="form-field">
+                <label for="tden" class="field-label">Target density <span class="unit">(kg/m&sup3;)</span></label>
+                <input type="number" step="any" min="500" max="4000" id="tden" value="2800">
+              </div>
+              <div class="form-field">
+                <label for="str" class="field-label">Target strength <span class="unit">(Pa)</span></label>
+                <input type="number" step="any" min="0" max="1e10" id="str" value="500000">
+              </div>
+              <div class="form-field">
+                <label for="mat" class="field-label">Scaling material</label>
+                <select id="mat">
+                  <option value="0" selected>Regolith</option>
+                  <option value="1">Soft rock (fractured crust)</option>
+                  <option value="2">Hard rock (competent basalt)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-grid-3">
+              <div class="form-field">
+                <label for="ang" class="field-label">Impact angle from vertical <span class="unit">(&deg;)</span></label>
+                <input type="number" step="any" min="0" max="89.9" id="ang" value="45">
+              </div>
+              <div class="form-field" style="grid-column: span 2;">
+                <label for="pkg" class="field-label">Scaling constants</label>
+                <select id="pkg">
+                  <option value="lpi2007" selected>LPI calculator (2007)</option>
+                  <option value="holsapple2003">Holsapple theory (2003)</option>
+                  <option value="impacts2022">Holsapple IMPACTS (2022)</option>
+                </select>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+              <input type="checkbox" id="exag" style="width: 16px; height: 16px; margin: 0; cursor: pointer;">
+              <label for="exag" style="margin: 0; font-size: 13px; color: var(--soft); cursor: pointer;">6x vertical exaggeration in cross-section profile</label>
+            </div>
+          </form>
+        </div>
+        <div>
+          <h3 style="margin-top: 0; margin-bottom: 14px;">Predicted Topographic Cross-Section</h3>
+          <div id="xsec" class="chart"></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="doc-section">
+      <h2>Calculated Physical Quantities</h2>
+      <div id="domain-note"></div>
+      <div class="ledger-grid-3">
+        <div class="ledger-column">
+          <h3>Final Crater Dimensions</h3>
+          <div id="dims"></div>
+        </div>
+        <div class="ledger-column">
+          <h3>Dimensionless Pi-Groups</h3>
+          <div id="pis"></div>
+          <p id="regime-note" style="font-size: 12.5px; color: var(--muted); margin: 10px 0 0 0; line-height: 1.5; text-align: left;"></p>
+        </div>
+        <div class="ledger-column">
+          <h3>Excavation Energetics &amp; Timing</h3>
+          <div id="derived"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/static/js/forward.js?v=v44"></script>
+</body>
+</html>

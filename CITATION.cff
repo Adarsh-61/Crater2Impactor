@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: "Crater2Impactor: Impactor Parameter Estimation from Lunar Impact Craters"
+message: >-
+  If you use this software, please cite it using the metadata below.
+authors:
+  - family-names: Pandey
+    given-names: Adarsh
+  - family-names: Purohit
+    given-names: Suchit
+type: software
+version: 2.1.0
+license: MIT
+repository-code: "https://github.com/Adarsh-61/Crater2Impactor"
+abstract: >-
+  Posterior inference of impactor mass, energy, momentum, size and speed from the rim
+  diameter of a simple lunar crater, with optional independent observations (impact
+  speed, angle, mass, flash energy, ejecta pattern). Point-source crater scaling with
+  three named constant sets, a layered regolith target model and declared impactor
+  populations are combined by importance sampling under explicit, swappable priors.
+  Validation uses laboratory craters, eleven lunar spacecraft impacts and the
+  observed production rate of new lunar craters.

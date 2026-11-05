@@ -1,0 +1,1374 @@
+{
+ "provenance": {
+  "script": "scripts/run_benchmarks_v2.py",
+  "script_sha256": "d2cbb8d076573afc65efea705cd761422b39122c548afd63b60a281d93ec0b28",
+  "engine_files_sha256": {
+   "__init__.py": "ba1cfb6f80a0e63f",
+   "bodies.py": "51f93a3832a90c27",
+   "calibration.py": "09ecde5990da3dc6",
+   "design.py": "54adc52d1518ce13",
+   "flash.py": "3a991ecd981c05fd",
+   "forward.py": "6358b18baff00853",
+   "infer.py": "497934779a6e9c5f",
+   "lunar_context.py": "e6343ee5a74356a4",
+   "observations.py": "12769028bbe6c6d5",
+   "packages.py": "d7b01046a58eb3fd",
+   "populations.py": "c7b9e854fc6816d0",
+   "sampler.py": "2c12bc37adfb885b",
+   "secondaries.py": "b52db5ea6e644a22",
+   "src_backend.py": "d5ca63cf805d3ec9",
+   "targets.py": "7a08da1f431b48c5"
+  },
+  "python": "3.11.9",
+  "numpy": "2.4.6",
+  "quick": false,
+  "started_utc": "2026-11-05T00:49:35Z",
+  "seconds_total": 663.0
+ },
+ "legend": {
+  "L": "law recovery on laboratory data",
+  "T": "location-aware target test",
+  "M": "mathematical correctness",
+  "C": "in-model calibration",
+  "R": "robustness under misspecification",
+  "B": "baseline comparison",
+  "P": "physical validation (measured impacts)",
+  "W": "real-world predictive test (population/event)"
+ },
+ "blocks": {
+  "M": {
+   "type": "M",
+   "title": "Fiber sampler vs independent importance sampler (log10 mass)",
+   "claim_supported": "The engine computes the posterior of its declared model correctly.",
+   "claim_not_supported": "Anything about real impactors.",
+   "results": [
+    {
+     "crater_m": 10.0,
+     "fiber_q05_q50_q95": [
+      0.3511583202696142,
+      0.9921272430092195,
+      1.6633526982654434
+     ],
+     "independent_q05_q50_q95": [
+      0.3522515878898718,
+      0.9921052415806938,
+      1.6597435502236333
+     ],
+     "max_abs_diff_dex": 0.0036091480418101174
+    },
+    {
+     "crater_m": 120.0,
+     "fiber_q05_q50_q95": [
+      3.558227047046408,
+      4.293136735682705,
+      5.102251069302715
+     ],
+     "independent_q05_q50_q95": [
+      3.553383596181483,
+      4.29398608157761,
+      5.100104536701128
+     ],
+     "max_abs_diff_dex": 0.004843450864925103
+    },
+    {
+     "crater_m": 1500.0,
+     "fiber_q05_q50_q95": [
+      7.372036655747148,
+      8.07882309781038,
+      8.825501461112683
+     ],
+     "independent_q05_q50_q95": [
+      7.367615724742352,
+      8.080723918977558,
+      8.825324262776412
+     ],
+     "max_abs_diff_dex": 0.00442093100479557
+    },
+    {
+     "crater_m": 30.0,
+     "site": "global (forward class rule)",
+     "fiber_q05_q50_q95": [
+      1.3942587488788847,
+      2.4074521474621315,
+      3.2321468972343466
+     ],
+     "independent_q05_q50_q95": [
+      1.3881013948342662,
+      2.406244920830907,
+      3.2286399640314323
+     ],
+     "max_abs_diff_dex": 0.006157354044618479
+    },
+    {
+     "crater_m": 300.0,
+     "site": "global (forward class rule)",
+     "fiber_q05_q50_q95": [
+      4.559663962908189,
+      5.370293118689387,
+      6.176991366871842
+     ],
+     "independent_q05_q50_q95": [
+      4.56389036442081,
+      5.372347070446531,
+      6.16985600358855
+     ],
+     "max_abs_diff_dex": 0.007135363283292229
+    }
+   ]
+  },
+  "C": {
+   "type": "C",
+   "title": "In-model calibration (simulator = declared model set)",
+   "claim_supported": "Intervals are calibrated when reality matches one of the declared scenarios.",
+   "claim_not_supported": "Calibration on real craters.",
+   "results": [
+    {
+     "label": "truth package lpi2007, engine averages all three",
+     "n": 133,
+     "n_draws_per_crater": 30000,
+     "seconds": 36.8,
+     "per_quantity": {
+      "log10_mass_kg": {
+       "coverage90": 0.9323308270676691,
+       "coverage90_mc_se": 0.021779837535207625,
+       "coverage68": 0.6842105263157895,
+       "envelope_coverage90": 0.9548872180451128,
+       "median_width90_dex": 1.5559088688909877
+      },
+      "log10_energy_j": {
+       "coverage90": 0.9323308270676691,
+       "coverage90_mc_se": 0.021779837535207625,
+       "coverage68": 0.6917293233082706,
+       "envelope_coverage90": 0.9398496240601504,
+       "median_width90_dex": 1.4832648742394916
+      },
+      "log10_velocity_m_s": {
+       "coverage90": 0.8947368421052632,
+       "coverage90_mc_se": 0.026610929051767988,
+       "coverage68": 0.6766917293233082,
+       "envelope_coverage90": 0.9022556390977443,
+       "median_width90_dex": 0.4998560758638044
+      }
+     }
+    },
+    {
+     "label": "truth package holsapple2003, engine averages all three",
+     "n": 133,
+     "n_draws_per_crater": 30000,
+     "seconds": 39.8,
+     "per_quantity": {
+      "log10_mass_kg": {
+       "coverage90": 0.9323308270676691,
+       "coverage90_mc_se": 0.021779837535207625,
+       "coverage68": 0.6842105263157895,
+       "envelope_coverage90": 0.9473684210526315,
+       "median_width90_dex": 1.5564822081849763
+      },
+      "log10_energy_j": {
+       "coverage90": 0.9172932330827067,
+       "coverage90_mc_se": 0.02388354541371918,
+       "coverage68": 0.6691729323308271,
+       "envelope_coverage90": 0.924812030075188,
+       "median_width90_dex": 1.4837892987352301
+      },
+      "log10_velocity_m_s": {
+       "coverage90": 0.9022556390977443,
+       "coverage90_mc_se": 0.025750450877732332,
+       "coverage68": 0.6917293233082706,
+       "envelope_coverage90": 0.9097744360902256,
+       "median_width90_dex": 0.49988334480798624
+      }
+     }
+    },
+    {
+     "label": "truth package impacts2022, engine averages all three",
+     "n": 133,
+     "n_draws_per_crater": 30000,
+     "seconds": 37.2,
+     "per_quantity": {
+      "log10_mass_kg": {
+       "coverage90": 0.8872180451127819,
+       "coverage90_mc_se": 0.027428949299818192,
+       "coverage68": 0.6015037593984962,
+       "envelope_coverage90": 0.9398496240601504,
+       "median_width90_dex": 1.5554509669583971
+      },
+      "log10_energy_j": {
+       "coverage90": 0.8872180451127819,
+       "coverage90_mc_se": 0.027428949299818192,
+       "coverage68": 0.6466165413533834,
+       "envelope_coverage90": 0.9022556390977443,
+       "median_width90_dex": 1.4826440798767457
+      },
+      "log10_velocity_m_s": {
+       "coverage90": 0.9172932330827067,
+       "coverage90_mc_se": 0.02388354541371918,
+       "coverage68": 0.6541353383458647,
+       "envelope_coverage90": 0.9323308270676691,
+       "median_width90_dex": 0.49993553359591303
+      }
+     }
+    }
+   ]
+  },
+  "R": {
+   "type": "R",
+   "title": "Robustness under deliberate misspecification",
+   "claim_supported": "Shows which violated assumptions break calibration and whether the envelope or a declared mixture repairs it.",
+   "claim_not_supported": "Real-world accuracy.",
+   "results": [
+    {
+     "label": "angle law q=1.3 (steeper than declared 0.5-1.0)",
+     "n": 250,
+     "n_draws_per_crater": 30000,
+     "seconds": 70.7,
+     "per_quantity": {
+      "log10_mass_kg": {
+       "coverage90": 0.908,
+       "coverage90_mc_se": 0.018279606122671238,
+       "coverage68": 0.688,
+       "envelope_coverage90": 0.94,
+       "median_width90_dex": 1.5575806025496521
+      },
+      "log10_energy_j": {
+       "coverage90": 0.9,
+       "coverage90_mc_se": 0.018973665961010272,
+       "coverage68": 0.688,
+       "envelope_coverage90": 0.924,
+       "median_width90_dex": 1.4827848061121687
+      },
+      "log10_velocity_m_s": {
+       "coverage90": 0.928,
+       "coverage90_mc_se": 0.01634821091128934,
+       "coverage68": 0.736,
+       "envelope_coverage90": 0.932,
+       "median_width90_dex": 0.49956252515816724
+      }
+     }
+    },
+    {
+     "label": "model-form residual 0.2 dex (declared 0.1)",
+     "n": 250,
+     "n_draws_per_crater": 30000,
+     "seconds": 70.5,
+     "per_quantity": {
+      "log10_mass_kg": {
+       "coverage90": 0.444,
+       "coverage90_mc_se": 0.03142381262673261,
+       "coverage68": 0.288,
+       "envelope_coverage90": 0.508,
+       "median_width90_dex": 1.557807900204195
+      },
+      "log10_energy_j": {
+       "coverage90": 0.452,
+       "coverage90_mc_se": 0.031476721557366805,
+       "coverage68": 0.256,
+       "envelope_coverage90": 0.492,
+       "median_width90_dex": 1.4828360536832084
+      },
+      "log10_velocity_m_s": {
+       "coverage90": 0.908,
+       "coverage90_mc_se": 0.018279606122671238,
+       "coverage68": 0.656,
+       "envelope_coverage90": 0.908,
+       "median_width90_dex": 0.4996422094660167
+      }
+     }
+    },
+    {
+     "label": "30% secondaries, engine assumes primaries only",
+     "n": 250,
+     "n_draws_per_crater": 30000,
+     "seconds": 70.7,
+     "per_quantity": {
+      "log10_mass_kg": {
+       "coverage90": 0.64,
+       "coverage90_mc_se": 0.030357865537616442,
+       "coverage68": 0.488,
+       "envelope_coverage90": 0.652,
+       "median_width90_dex": 1.5617040748265503
+      },
+      "log10_energy_j": {
+       "coverage90": 0.928,
+       "coverage90_mc_se": 0.01634821091128934,
+       "coverage68": 0.736,
+       "envelope_coverage90": 0.96,
+       "median_width90_dex": 1.488302775557007
+      },
+      "log10_velocity_m_s": {
+       "coverage90": 0.608,
+       "coverage90_mc_se": 0.030876269204682096,
+       "coverage68": 0.416,
+       "envelope_coverage90": 0.608,
+       "median_width90_dex": 0.4996980763406875
+      }
+     }
+    },
+    {
+     "label": "30% secondaries, engine told P(secondary)=0.3",
+     "n": 250,
+     "n_draws_per_crater": 30000,
+     "seconds": 124.8,
+     "per_quantity": {
+      "log10_mass_kg": {
+       "coverage90": 0.868,
+       "coverage90_mc_se": 0.021408035874409405,
+       "coverage68": 0.66,
+       "envelope_coverage90": 0.952,
+       "median_width90_dex": 3.6538613275037655
+      },
+      "log10_energy_j": {
+       "coverage90": 0.948,
+       "coverage90_mc_se": 0.014042222046385685,
+       "coverage68": 0.764,
+       "envelope_coverage90": 0.964,
+       "median_width90_dex": 1.812869294694197
+      },
+      "log10_velocity_m_s": {
+       "coverage90": 0.904,
+       "coverage90_mc_se": 0.018631586083852333,
+       "coverage68": 0.66,
+       "envelope_coverage90": 0.96,
+       "median_width90_dex": 2.057810745116061
+      }
+     }
+    },
+    {
+     "label": "meteoroid population, engine assumes asteroidal",
+     "n": 250,
+     "n_draws_per_crater": 30000,
+     "seconds": 69.6,
+     "per_quantity": {
+      "log10_mass_kg": {
+       "coverage90": 0.888,
+       "coverage90_mc_se": 0.0199455258140767,
+       "coverage68": 0.672,
+       "envelope_coverage90": 0.912,
+       "median_width90_dex": 1.557251445937057
+      },
+      "log10_energy_j": {
+       "coverage90": 0.896,
+       "coverage90_mc_se": 0.019306372005117894,
+       "coverage68": 0.716,
+       "envelope_coverage90": 0.928,
+       "median_width90_dex": 1.4830883022266526
+      },
+      "log10_velocity_m_s": {
+       "coverage90": 0.836,
+       "coverage90_mc_se": 0.023418283455454204,
+       "coverage68": 0.592,
+       "envelope_coverage90": 0.836,
+       "median_width90_dex": 0.49957705154744536
+      }
+     }
+    }
+   ]
+  },
+  "B": {
+   "type": "B",
+   "title": "Baselines on a common synthetic test set (truth from all three packages)",
+   "claim_supported": "Relative calibration and sharpness of methods when the truth is drawn from the declared scenario set.",
+   "claim_not_supported": "Real-world accuracy of any method.",
+   "results": {
+    "n": 300,
+    "n_draws_per_crater": 30000,
+    "methods": {
+     "v2 engine (3 packages, global target)": {
+      "lm": {
+       "coverage90": 0.8966666666666666,
+       "median_abs_error_dex": 0.33786795934705127,
+       "median_width90_dex": 1.5557237359732994,
+       "interval_score90": 2.0902869839915215,
+       "seconds_total": 84.63
+      },
+      "le": {
+       "coverage90": 0.8733333333333333,
+       "median_abs_error_dex": 0.3040543270833309,
+       "median_width90_dex": 1.4822415112762974,
+       "interval_score90": 1.9700842649904364,
+       "seconds_total": 84.63
+      },
+      "lu": {
+       "coverage90": 0.8933333333333333,
+       "median_abs_error_dex": 0.10591310088473405,
+       "median_width90_dex": 0.49977719438792034,
+       "interval_score90": 0.6142909312345868,
+       "seconds_total": 84.63
+      }
+     },
+     "prior only (ignores crater)": {
+      "lu": {
+       "coverage90": 0.8966666666666666,
+       "median_abs_error_dex": 0.11113247220491607,
+       "median_width90_dex": 0.49941958135664777,
+       "interval_score90": 0.6833113654425634,
+       "seconds_total": 0.0
+      }
+     },
+     "LPI-style point inverse (U=20 km/s, 45 deg, nominal target)": {
+      "lm": {
+       "coverage90": 0.0,
+       "median_abs_error_dex": 0.35064835552265533,
+       "median_width90_dex": 0.0,
+       "interval_score90": 8.440051020332566,
+       "seconds_total": 0.0
+      }
+     }
+    }
+   }
+  },
+  "P": {
+   "type": "P",
+   "title": "Measured impacts: forward crater size and inverse mass recovery",
+   "claim_supported": "How compact-impactor scaling performs on the only lunar impacts with known mass, speed and angle (hollow, slow spacecraft).",
+   "claim_not_supported": "Accuracy for natural (compact, ~20 km/s) impactors. The sample is tiny and outside the scaling law's calibration regime.",
+   "summary": {
+    "n_events_used": 11,
+    "n_quality_AB": 11,
+    "forward_median_log10_residual_AB": 0.01837383157756684,
+    "forward_inside_90_AB": "11/11",
+    "inverse_median_log10_error_AB": 0.08062861570798274,
+    "inverse_inside_90_AB": "11/11",
+    "forward_rms_log10_residual_AB": 0.045353771343951264,
+    "inverse_rms_log10_error_AB": 0.16861789499600677,
+    "inverse_pit_sd_AB": 0.12676009313708006,
+    "n_held_out": 0
+   },
+   "events": [
+    {
+     "id": "apollo13_sivb",
+     "label": "Apollo 13 S-IVB",
+     "quality": "A",
+     "sources": "ground_truth_events.json + LROC featured site (s10)",
+     "held_out": false,
+     "development_use": "sigma_mf = 0.10 dex was set in session 3 (experiment E1) with knowledge of this crater. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+     "site": "(-2.56, -27.89): mare cell",
+     "observed_d_m": 31.07,
+     "known_mass_kg": 13911,
+     "mass_range_kg": null,
+     "velocity_km_s": 2.58,
+     "elev_deg": 76,
+     "forward": {
+      "compact (2700 kg/m3, aluminium)": {
+       "predicted_median_m": 33.612215036149,
+       "predicted_90_m": [
+        18.186437887012552,
+        58.52808935439236
+       ],
+       "log10_residual_obs_minus_pred": -0.03415588004993838,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 34.47858838803854,
+        "holsapple2003": 34.682772462725225,
+        "impacts2022": 31.783023694872433
+       }
+      },
+      "bulk (23 kg/m3, G09)": {
+       "predicted_median_m": 33.980006001309995,
+       "predicted_90_m": [
+        17.90983861491168,
+        69.5528141308864
+       ],
+       "log10_residual_obs_minus_pred": -0.038882197980100175,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 28.785376452406524,
+        "holsapple2003": 39.64167336831868,
+        "impacts2022": 36.34077367119152
+       }
+      }
+     },
+     "inverse_mass": {
+      "median_kg": 10691.017539187715,
+      "q05_kg": 1634.0278260237549,
+      "q95_kg": 91760.63995904899,
+      "log10_error_median_minus_true": -0.1143393085850084,
+      "pit_of_true_mass": 0.582,
+      "true_inside_90": true
+     }
+    },
+    {
+     "id": "apollo14_sivb",
+     "label": "Apollo 14 S-IVB",
+     "quality": "A",
+     "sources": "ground_truth_events.json + LROC featured site (s10)",
+     "held_out": false,
+     "development_use": "sigma_mf = 0.10 dex was set in session 3 (experiment E1) with knowledge of this crater. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+     "site": "(-8.18, -26.03): mare cell",
+     "observed_d_m": 32.4,
+     "known_mass_kg": 14016,
+     "mass_range_kg": null,
+     "velocity_km_s": 2.54,
+     "elev_deg": 69,
+     "forward": {
+      "compact (2700 kg/m3, aluminium)": {
+       "predicted_median_m": 32.92557432407913,
+       "predicted_90_m": [
+        17.783967271528734,
+        57.12676446912967
+       ],
+       "log10_residual_obs_minus_pred": -0.00698834893527301,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 33.77379967241065,
+        "holsapple2003": 33.884151490090666,
+        "impacts2022": 31.193622979575196
+       }
+      },
+      "bulk (23 kg/m3, G09)": {
+       "predicted_median_m": 33.30502824874582,
+       "predicted_90_m": [
+        17.56236297663454,
+        67.77573597042658
+       ],
+       "log10_residual_obs_minus_pred": -0.011964796147449532,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 28.271346250410016,
+        "holsapple2003": 38.678933748906125,
+        "impacts2022": 35.62695146748674
+       }
+      }
+     },
+     "inverse_mass": {
+      "median_kg": 13352.324882877903,
+      "q05_kg": 1921.887089089672,
+      "q95_kg": 117251.63124783635,
+      "log10_error_median_minus_true": -0.021067197962536532,
+      "pit_of_true_mass": 0.516,
+      "true_inside_90": true
+     }
+    },
+    {
+     "id": "apollo16_sivb",
+     "label": "Apollo 16 S-IVB",
+     "quality": "B",
+     "sources": "ground_truth_events.json",
+     "held_out": false,
+     "development_use": "sigma_mf = 0.10 dex was set in session 3 (experiment E1) with knowledge of this crater. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+     "site": "(1.92, -24.62): mare cell",
+     "observed_d_m": 34.6,
+     "known_mass_kg": 14100,
+     "mass_range_kg": null,
+     "velocity_km_s": 2.55,
+     "elev_deg": 79,
+     "forward": {
+      "compact (2700 kg/m3, aluminium)": {
+       "predicted_median_m": 33.50724682263676,
+       "predicted_90_m": [
+        18.110248846727266,
+        58.20243646928556
+       ],
+       "log10_residual_obs_minus_pred": 0.013937354003106622,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 34.35208537971119,
+        "holsapple2003": 34.491062492613146,
+        "impacts2022": 31.711600763567123
+       }
+      },
+      "bulk (23 kg/m3, G09)": {
+       "predicted_median_m": 33.91263556393225,
+       "predicted_90_m": [
+        17.861983423745325,
+        69.05873613752284
+       ],
+       "log10_residual_obs_minus_pred": 0.008714555950878037,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 28.792591162467478,
+        "holsapple2003": 39.38812415742086,
+        "impacts2022": 36.28672713421482
+       }
+      }
+     },
+     "inverse_mass": {
+      "median_kg": 15847.58659087306,
+      "q05_kg": 2291.424415577292,
+      "q95_kg": 133053.3133981027,
+      "log10_error_median_minus_true": 0.050744020770846276,
+      "pit_of_true_mass": 0.46266666666666667,
+      "true_inside_90": true
+     }
+    },
+    {
+     "id": "apollo15_sivb",
+     "label": "Apollo 15 S-IVB",
+     "quality": "A",
+     "sources": "lit_s10 compilation: NSSDC energy and speed, LROC featured site",
+     "held_out": false,
+     "development_use": "new in session 10; no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+     "site": "(-1.29, -11.82): mare cell",
+     "observed_d_m": 36.99,
+     "known_mass_kg": 13851,
+     "mass_range_kg": null,
+     "velocity_km_s": 2.58,
+     "elev_deg": 62,
+     "forward": {
+      "compact (2700 kg/m3, aluminium)": {
+       "predicted_median_m": 32.68890276936579,
+       "predicted_90_m": [
+        17.692047108657004,
+        56.763958296807104
+       ],
+       "log10_residual_obs_minus_pred": 0.05368398795151768,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 33.56835956860062,
+        "holsapple2003": 33.70364032045732,
+        "impacts2022": 30.904852875445144
+       }
+      },
+      "bulk (23 kg/m3, G09 (same S-IVB design))": {
+       "predicted_median_m": 33.00811490330181,
+       "predicted_90_m": [
+        17.419050612474358,
+        67.38101477860866
+       ],
+       "log10_residual_obs_minus_pred": 0.04946360887757225,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 27.963778677310145,
+        "holsapple2003": 38.452954996676354,
+        "impacts2022": 35.26267312543303
+       }
+      }
+     },
+     "inverse_mass": {
+      "median_kg": 21583.95393058287,
+      "q05_kg": 3170.3425084445703,
+      "q95_kg": 175640.62647869758,
+      "log10_error_median_minus_true": 0.19264987608727946,
+      "pit_of_true_mass": 0.36133333333333334,
+      "true_inside_90": true
+     }
+    },
+    {
+     "id": "apollo17_sivb",
+     "label": "Apollo 17 S-IVB",
+     "quality": "A",
+     "sources": "lit_s10 compilation: NSSDC energy and speed, LROC featured site",
+     "held_out": false,
+     "development_use": "new in session 10; no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+     "site": "(-4.17, -12.33): mare cell",
+     "observed_d_m": 31.0,
+     "known_mass_kg": 14487,
+     "mass_range_kg": null,
+     "velocity_km_s": 2.55,
+     "elev_deg": 55,
+     "forward": {
+      "compact (2700 kg/m3, aluminium)": {
+       "predicted_median_m": 32.068463735865805,
+       "predicted_90_m": [
+        17.327261191366265,
+        55.62626329035515
+       ],
+       "log10_residual_obs_minus_pred": -0.014716461385183751,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 32.901519106162674,
+        "holsapple2003": 32.995347122345045,
+        "impacts2022": 30.395008012068256
+       }
+      },
+      "bulk (23 kg/m3, G09 (same S-IVB design))": {
+       "predicted_median_m": 32.41570542410961,
+       "predicted_90_m": [
+        17.096310199956225,
+        65.76119366493415
+       ],
+       "log10_residual_obs_minus_pred": -0.019393783237294935,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 27.550933992795233,
+        "holsapple2003": 37.628630360619226,
+        "impacts2022": 34.67976037835048
+       }
+      }
+     },
+     "inverse_mass": {
+      "median_kg": 13023.515234168897,
+      "q05_kg": 1964.9659932829616,
+      "q95_kg": 114004.40776596502,
+      "log10_error_median_minus_true": -0.046250237734867916,
+      "pit_of_true_mass": 0.5333333333333333,
+      "true_inside_90": true
+     }
+    },
+    {
+     "id": "ranger7",
+     "label": "Ranger 7",
+     "quality": "A",
+     "sources": "JPL TR 32-700; LROC featured site 21 and post 52",
+     "held_out": false,
+     "development_use": "no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+     "site": "(-10.63, -20.68): mare cell",
+     "observed_d_m": 13.49,
+     "known_mass_kg": 367.2,
+     "mass_range_kg": null,
+     "velocity_km_s": 2.616,
+     "elev_deg": 64.1,
+     "forward": {
+      "compact (2700 kg/m3, aluminium)": {
+       "predicted_median_m": 12.022673589909536,
+       "predicted_90_m": [
+        7.2387800685811685,
+        19.050200691028312
+       ],
+       "log10_residual_obs_minus_pred": 0.05001089330051823,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 12.596160628597385,
+        "holsapple2003": 12.363757740051678,
+        "impacts2022": 11.063781684684322
+       }
+      }
+     },
+     "inverse_mass": {
+      "median_kg": 593.2735381765701,
+      "q05_kg": 109.53223859397902,
+      "q95_kg": 5369.237830561726,
+      "log10_error_median_minus_true": 0.20835230537139227,
+      "pit_of_true_mass": 0.344,
+      "true_inside_90": true
+     }
+    },
+    {
+     "id": "ranger6",
+     "label": "Ranger 6",
+     "quality": "B",
+     "sources": "lit_s10 compilation: JPL mission reports, LROC featured sites",
+     "held_out": false,
+     "development_use": "new in session 10; no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+     "site": "(9.39, 21.48): mare cell",
+     "observed_d_m": 14.0,
+     "known_mass_kg": 381,
+     "mass_range_kg": null,
+     "velocity_km_s": 2.66,
+     "elev_deg": 48.49,
+     "forward": {
+      "compact (2700 kg/m3, aluminium)": {
+       "predicted_median_m": 11.638450079462107,
+       "predicted_90_m": [
+        7.011372014833572,
+        18.44063284536981
+       ],
+       "log10_residual_obs_minus_pred": 0.08023288755987038,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 12.183273501804214,
+        "holsapple2003": 11.982333519604301,
+        "impacts2022": 10.722013070927195
+       }
+      }
+     },
+     "inverse_mass": {
+      "median_kg": 788.0779061443726,
+      "q05_kg": 145.9522670046086,
+      "q95_kg": 7325.500449782779,
+      "log10_error_median_minus_true": 0.315644176504541,
+      "pit_of_true_mass": 0.254,
+      "true_inside_90": true
+     }
+    },
+    {
+     "id": "ranger8",
+     "label": "Ranger 8",
+     "quality": "A",
+     "sources": "lit_s10 compilation: JPL mission reports, LROC featured sites",
+     "held_out": false,
+     "development_use": "new in session 10; no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+     "site": "(2.64, 24.79): mare cell",
+     "observed_d_m": 12.0,
+     "known_mass_kg": 368.4,
+     "mass_range_kg": null,
+     "velocity_km_s": 2.651,
+     "elev_deg": 41.7,
+     "forward": {
+      "compact (2700 kg/m3, aluminium)": {
+       "predicted_median_m": 11.15590322179139,
+       "predicted_90_m": [
+        6.726522657718751,
+        17.625097252654832
+       ],
+       "log10_residual_obs_minus_pred": 0.031676507971026974,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 11.691799734239025,
+        "holsapple2003": 11.48674475093739,
+        "impacts2022": 10.277242804965987
+       }
+      }
+     },
+     "inverse_mass": {
+      "median_kg": 510.94932085583105,
+      "q05_kg": 96.41017435162775,
+      "q95_kg": 4612.330542863039,
+      "log10_error_median_minus_true": 0.14205820470745056,
+      "pit_of_true_mass": 0.372,
+      "true_inside_90": true
+     }
+    },
+    {
+     "id": "ranger9",
+     "label": "Ranger 9",
+     "quality": "A",
+     "sources": "lit_s10 compilation: JPL mission reports, LROC featured sites",
+     "held_out": false,
+     "development_use": "new in session 10; no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+     "site": "(-12.83, -2.39): highland cell",
+     "observed_d_m": 14.0,
+     "known_mass_kg": 368.0,
+     "mass_range_kg": null,
+     "velocity_km_s": 2.671,
+     "elev_deg": 64.9,
+     "forward": {
+      "compact (2700 kg/m3, aluminium)": {
+       "predicted_median_m": 12.2532979481267,
+       "predicted_90_m": [
+        7.470891166008971,
+        19.47218413578641
+       ],
+       "log10_residual_obs_minus_pred": 0.057875041842328265,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 12.85094370464139,
+        "holsapple2003": 12.640731204789462,
+        "impacts2022": 11.255727505518372
+       }
+      }
+     },
+     "inverse_mass": {
+      "median_kg": 596.5791808013065,
+      "q05_kg": 117.66823389378223,
+      "q95_kg": 4039.073161152505,
+      "log10_error_median_minus_true": 0.20982027476943088,
+      "pit_of_true_mass": 0.306,
+      "true_inside_90": true
+     }
+    },
+    {
+     "id": "lcross",
+     "label": "LCROSS Centaur",
+     "quality": "B",
+     "sources": "ground_truth_events.json; mass: Marshall et al. 2011 (separation mass, flight data), s40i",
+     "held_out": false,
+     "development_use": "no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+     "site": "(-84.68, -48.71): highland cell",
+     "observed_d_m": 22.0,
+     "known_mass_kg": 2271.61,
+     "mass_range_kg": null,
+     "velocity_km_s": 2.507,
+     "elev_deg": 86,
+     "forward": {
+      "compact (2700 kg/m3, aluminium)": {
+       "predicted_median_m": 21.088653408022292,
+       "predicted_90_m": [
+        12.47736410238946,
+        35.46799175820601
+       ],
+       "log10_residual_obs_minus_pred": 0.01837383157756684,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 21.912481170866094,
+        "holsapple2003": 21.833412141751488,
+        "impacts2022": 19.472766898029594
+       }
+      }
+     },
+     "inverse_mass": {
+      "median_kg": 2735.031846303698,
+      "q05_kg": 507.70947786701737,
+      "q95_kg": 19577.904552651016,
+      "log10_error_median_minus_true": 0.08062861570798274,
+      "pit_of_true_mass": 0.4206666666666667,
+      "true_inside_90": true
+     }
+    },
+    {
+     "id": "falcon9_2025_010D",
+     "label": "Falcon 9 second stage 2025-010D",
+     "quality": "B",
+     "sources": "ground_truth_events.json",
+     "held_out": false,
+     "development_use": "no default parameter was set from it. All 11 anchors were examined in sessions 10-40 and fit the opt-in SIGMA_MF_ARTIFICIAL table (engine/calibration.py), which is not a default.",
+     "site": "(19.48, -93.29): highland cell",
+     "observed_d_m": 18.0,
+     "known_mass_kg": 4400,
+     "mass_range_kg": [
+      3900,
+      4900
+     ],
+     "velocity_km_s": 2.43,
+     "elev_deg": 31,
+     "forward": {
+      "compact (2700 kg/m3, aluminium)": {
+       "predicted_median_m": 21.002728117047013,
+       "predicted_90_m": [
+        11.974350868511879,
+        36.36271332661144
+       ],
+       "log10_residual_obs_minus_pred": -0.0670032053080839,
+       "observed_inside_90": true,
+       "per_package_median_m": {
+        "lpi2007": 21.08658785741916,
+        "holsapple2003": 20.984976845168006,
+        "impacts2022": 18.81622147019129
+       }
+      }
+     },
+     "inverse_mass": {
+      "median_kg": 2719.6072183695164,
+      "q05_kg": 507.9569668528082,
+      "q95_kg": 20720.447267897438,
+      "log10_error_median_minus_true": -0.2089464912800807,
+      "pit_of_true_mass": 0.6693333333333333,
+      "true_inside_90": true
+     }
+    }
+   ],
+   "excluded": [
+    {
+     "id": "grail_a",
+     "reason": "grazing (2 deg) impact into a slope: outside point-source validity"
+    },
+    {
+     "id": "ladee",
+     "reason": "upper bound only; low angle not given"
+    }
+   ]
+  },
+  "W": {
+   "bins_m": [
+    [
+     7.0,
+     8.0
+    ],
+    [
+     8.0,
+     9.0
+    ],
+    [
+     9.0,
+     10.0
+    ],
+    [
+     10.0,
+     12.0
+    ],
+    [
+     12.0,
+     14.0
+    ],
+    [
+     14.0,
+     17.0
+    ],
+    [
+     17.0,
+     40.0
+    ],
+    [
+     40.0,
+     1000000000.0
+    ]
+   ],
+   "observed_counts": [
+    8,
+    4,
+    6,
+    9,
+    4,
+    1,
+    1,
+    1
+   ],
+   "exposure_km2_yr": 3320000.0,
+   "packages": {
+    "lpi2007": {
+     "predicted_counts_at_delta0_F1": [
+      11.131985807073589,
+      6.674545729663408,
+      4.074608992441897,
+      4.70280633174032,
+      2.3570578137327285,
+      1.7413827850137753,
+      2.1196774975366637,
+      0.2255032376768827
+     ],
+     "predicted_total_ge7m_at_delta0_F1": 33.027568194879265,
+     "observed_total_ge7m": 34,
+     "lowest_bin_m": 7.0,
+     "delta_log10_D_posterior": {
+      "median": 0.04577480407908093,
+      "q05": -0.0953343781356778,
+      "q95": 0.18811012373565555,
+      "mode": 0.09000000000000008
+     },
+     "delta_log10_D_best_at_F1": 0.010000000000000009,
+     "regolith_strength_log10_pa_posterior": {
+      "median": 4.271232537267485,
+      "q05": 3.1136923107283083,
+      "q95": 5.023307005265028,
+      "mode": 4.8
+     },
+     "slope_check": {
+      "predicted_N_ge7_over_N_ge12": 5.1256221436869485,
+      "observed_N_ge7_over_N_ge12": 4.857142857142857
+     }
+    },
+    "holsapple2003": {
+     "predicted_counts_at_delta0_F1": [
+      10.722977041004487,
+      6.588018137389659,
+      4.238013463099615,
+      4.6567086402193,
+      2.3401495758537423,
+      1.750533619338496,
+      2.107812486560431,
+      0.259515955677592
+     ],
+     "predicted_total_ge7m_at_delta0_F1": 32.663728919143324,
+     "observed_total_ge7m": 34,
+     "lowest_bin_m": 7.0,
+     "delta_log10_D_posterior": {
+      "median": 0.04431076533329475,
+      "q05": -0.09444950719095833,
+      "q95": 0.1884634508162727,
+      "mode": 0.06000000000000005
+     },
+     "delta_log10_D_best_at_F1": 0.010000000000000009,
+     "regolith_strength_log10_pa_posterior": {
+      "median": 4.271652298240836,
+      "q05": 3.1078998613192237,
+      "q95": 5.082016131296501,
+      "mode": 4.85
+     },
+     "slope_check": {
+      "predicted_N_ge7_over_N_ge12": 5.057861576127588,
+      "observed_N_ge7_over_N_ge12": 4.857142857142857
+     }
+    },
+    "impacts2022": {
+     "predicted_counts_at_delta0_F1": [
+      7.170312830848928,
+      4.299466352826642,
+      2.823863656283916,
+      3.2402682919389667,
+      1.6086155436666194,
+      1.2283196091904807,
+      1.489644467583703,
+      0.1646530586373587
+     ],
+     "predicted_total_ge7m_at_delta0_F1": 22.025143810976616,
+     "observed_total_ge7m": 34,
+     "lowest_bin_m": 7.0,
+     "delta_log10_D_posterior": {
+      "median": 0.10393722424315091,
+      "q05": -0.03883609665019511,
+      "q95": 0.2592958723534652,
+      "mode": 0.010000000000000009
+     },
+     "delta_log10_D_best_at_F1": 0.07000000000000006,
+     "regolith_strength_log10_pa_posterior": {
+      "median": 3.8197200217502125,
+      "q05": 3.0519478425025595,
+      "q95": 4.46682256612,
+      "mode": 4.1
+     },
+     "slope_check": {
+      "predicted_N_ge7_over_N_ge12": 4.9040308941413695,
+      "observed_N_ge7_over_N_ge12": 4.857142857142857
+     }
+    }
+   },
+   "sensitivity_lpi2007": {
+    "baseline": {
+     "observed_total": 34,
+     "predicted_total_delta0_F1": 32.63297324739433,
+     "delta_posterior": {
+      "median": 0.06065320782180379,
+      "q05": -0.09864432318357436,
+      "q95": 0.19160535290923086,
+      "mode": 0.10999999999999999
+     },
+     "regolith_log10_Y_posterior": {
+      "median": 4.287397208221384,
+      "q05": 3.122065502761183,
+      "q95": 5.032086093997131,
+      "mode": 4.75
+     }
+    },
+    "velocity median 15 km/s": {
+     "observed_total": 34,
+     "predicted_total_delta0_F1": 26.63342457918561,
+     "delta_posterior": {
+      "median": 0.08852759330079268,
+      "q05": -0.06959257461763765,
+      "q95": 0.22020950133925402,
+      "mode": 0.13
+     },
+     "regolith_log10_Y_posterior": {
+      "median": 4.194720059197161,
+      "q05": 3.099560395423641,
+      "q95": 4.869023662413734,
+      "mode": 4.55
+     }
+    },
+    "velocity median 22 km/s": {
+     "observed_total": 34,
+     "predicted_total_delta0_F1": 40.882599086684756,
+     "delta_posterior": {
+      "median": 0.02188870126424491,
+      "q05": -0.13246104363410374,
+      "q95": 0.15900517101365377,
+      "mode": 0.07000000000000006
+     },
+     "regolith_log10_Y_posterior": {
+      "median": 4.411254524054424,
+      "q05": 3.1526221843106876,
+      "q95": 5.170092829653283,
+      "mode": 4.949999999999999
+     }
+    },
+    "sigma_mf 0.05 dex": {
+     "observed_total": 34,
+     "predicted_total_delta0_F1": 27.117810400406658,
+     "delta_posterior": {
+      "median": 0.08305509599209317,
+      "q05": -0.07625333396346912,
+      "q95": 0.2195093658047107,
+      "mode": 0.16000000000000003
+     },
+     "regolith_log10_Y_posterior": {
+      "median": 4.205151619558854,
+      "q05": 3.1052533888320397,
+      "q95": 4.906702053841801,
+      "mode": 4.6
+     }
+    },
+    "sigma_mf 0.20 dex": {
+     "observed_total": 34,
+     "predicted_total_delta0_F1": 68.8673628346561,
+     "delta_posterior": {
+      "median": -0.07154934764276413,
+      "q05": -0.2020363118902746,
+      "q95": 0.08843125866082062,
+      "mode": -0.09999999999999998
+     },
+     "regolith_log10_Y_posterior": {
+      "median": 4.538486399711608,
+      "q05": 3.2553809628730472,
+      "q95": 5.2259797257283,
+      "mode": 4.6
+     }
+    },
+    "angle law q = 1 (vertical rule)": {
+     "observed_total": 34,
+     "predicted_total_delta0_F1": 29.608514184859956,
+     "delta_posterior": {
+      "median": 0.07842561094935249,
+      "q05": -0.08476570049127914,
+      "q95": 0.20456303362034242,
+      "mode": 0.12
+     },
+     "regolith_log10_Y_posterior": {
+      "median": 4.235891010942022,
+      "q05": 3.1077539672537275,
+      "q95": 4.962293005345308,
+      "mode": 4.75
+     }
+    },
+    "completeness 8 m": {
+     "observed_total": 26,
+     "predicted_total_delta0_F1": 21.466074325272153,
+     "delta_posterior": {
+      "median": 0.07986976396538335,
+      "q05": -0.07821311894232988,
+      "q95": 0.2111764352135792,
+      "mode": 0.16000000000000003
+     },
+     "regolith_log10_Y_posterior": {
+      "median": 4.016014537087542,
+      "q05": 3.0649983422608496,
+      "q95": 4.923341896178937,
+      "mode": 3.95
+     }
+    },
+    "flux slope b0 = 0.87": {
+     "observed_total": 34,
+     "predicted_total_delta0_F1": 24.898924999001636,
+     "delta_posterior": {
+      "median": 0.1045216109943337,
+      "q05": -0.05465797103439269,
+      "q95": 0.23900703699951303,
+      "mode": 0.18000000000000005
+     },
+     "regolith_log10_Y_posterior": {
+      "median": 4.032884262637998,
+      "q05": 3.0774793067371973,
+      "q95": 4.807273643801733,
+      "mode": 4.6
+     }
+    },
+    "flux slope b0 = 0.93": {
+     "observed_total": 34,
+     "predicted_total_delta0_F1": 42.81188893750516,
+     "delta_posterior": {
+      "median": 0.0056688627902122795,
+      "q05": -0.13819189992637515,
+      "q95": 0.14633513984902807,
+      "mode": -0.09999999999999998
+     },
+     "regolith_log10_Y_posterior": {
+      "median": 4.522415594222154,
+      "q05": 3.1761681838075932,
+      "q95": 5.184984441810573,
+      "mode": 5.05
+     }
+    },
+    "2020 NAC survey (exposure 7.9e6, n>=16 m: 5, >=17: 4, >=18: 3, >=19: 2, >=43: 1; digitised R04)": {
+     "observed_total": 5,
+     "predicted_total_delta0_F1": 6.707658157221332,
+     "delta_posterior": {
+      "median": -0.015769701749568377,
+      "q05": -0.20582139387460963,
+      "q95": 0.170236630918611,
+      "mode": -0.010000000000000009
+     },
+     "regolith_log10_Y_posterior": {
+      "median": 4.150298822475182,
+      "q05": 3.071571700549109,
+      "q95": 5.178677345973757,
+      "mode": 4.8
+     }
+    }
+   },
+   "type": "W",
+   "title": "Population test: LROC new craters vs bolide flux x scaling",
+   "flux_note": "Factor 1/4 (NEOMOD3 finds the D>10 m flux ~4x below the bolide estimate, R12 s5.4) to x2 (luminous-efficiency envelope 5-20%, R06). Fit supported for impactor diameters ~1-10 m; 7-40 m lunar craters need ~0.1-0.6 m bodies, so the law is extrapolated. Lunar flash flux at 30 g (Suggs et al. 2014, R08) is within ~30% of the extrapolation.",
+   "claim_supported": "Whether the scaling law plus an independent impactor flux reproduces the observed production of 7-40 m lunar craters, and which single normalisation (crater-size shift, or regolith strength) the counts constrain.",
+   "claim_not_supported": "Per-crater accuracy; separate identification of flux and scaling (they are degenerate: a flux factor F maps to a size factor F^(1/2.7))."
+  },
+  "L": {
+   "type": "L",
+   "title": "Law recovery from laboratory craters and cross-laboratory transfer",
+   "data": "Holsapple crater database v1.3 (dry Flintshot sand, rho 1.8 g/cc, n=37); held-out: Ormo et al. 2024 Table 5 (Lane Mountain quartz sand, 10-502 G, CC BY 4.0)",
+   "recovered": {
+    "mu": 0.39529363547316454,
+    "mu_90": [
+     0.3837297974735249,
+     0.4099432037828328
+    ],
+    "nu": 0.3481336447132102,
+    "nu_90": [
+     0.31027224853724017,
+     0.36886070064748505
+    ],
+    "K1": 0.13321107637201016
+   },
+   "published": {
+    "mu_dry_sand": 0.41,
+    "nu_holsapple": "1/3 (adopted), experiments 0.2-0.4"
+   },
+   "held_out": [
+    {
+     "gravity_G": 10,
+     "u_m_s": 1766,
+     "observed_d_mm": 145,
+     "predicted_d_mm": 169.53095700870983,
+     "log10_pred_over_obs": 0.06788101139839839
+    },
+    {
+     "gravity_G": 51,
+     "u_m_s": 1780,
+     "observed_d_mm": 112,
+     "predicted_d_mm": 130.55999041720656,
+     "log10_pred_over_obs": 0.06659208686342123
+    },
+    {
+     "gravity_G": 150,
+     "u_m_s": 1754,
+     "observed_d_mm": 98,
+     "predicted_d_mm": 109.1168090074635,
+     "log10_pred_over_obs": 0.046665581375098665
+    },
+    {
+     "gravity_G": 502,
+     "u_m_s": 1966,
+     "observed_d_mm": 79,
+     "predicted_d_mm": 93.11213523328463,
+     "log10_pred_over_obs": 0.07137919464688847
+    }
+   ],
+   "engine_constants_held_out": {
+    "Flintshot dry sand (in-sample)": {
+     "in_sample": true,
+     "n": 37,
+     "mean_log10_obs_over_pred": 0.046256703002960295,
+     "sd_dex": 0.025931915875483193,
+     "inside_90": "37/37"
+    },
+    "F-140 sand": {
+     "in_sample": false,
+     "n": 3,
+     "mean_log10_obs_over_pred": -0.05617432099052214,
+     "sd_dex": 0.1095330495559792,
+     "inside_90": "3/3"
+    },
+    "KAFB desert alluvium": {
+     "in_sample": false,
+     "n": 3,
+     "mean_log10_obs_over_pred": -0.0341907487836719,
+     "sd_dex": 0.07759585720636679,
+     "inside_90": "3/3"
+    },
+    "Lane Mountain quartz sand (Ormo et al. 2024)": {
+     "in_sample": false,
+     "n": 4,
+     "mean_log10_obs_over_pred": -0.0028609844598873058,
+     "sd_dex": 0.012943072157886575,
+     "inside_90": "4/4"
+    },
+    "all_held_out": {
+     "n": 10,
+     "mean_log10_obs_over_pred": -0.028253914716213135,
+     "rms_dex": 0.07038906676723432,
+     "inside_90": "10/10"
+    }
+   },
+   "gravity_trend_log10_D10G_over_D502G": {
+    "observed": 0.26374091094453345,
+    "predicted": 0.26024272769604345
+   },
+   "notes": [
+    "The database's code-41 sand mixes two target states (1.8 and 2.1 g/cc); mixing them biases mu to 0.35 and breaks extrapolation. Only the 1.8 g/cc state is used.",
+    "An unconstrained raw-variable fit recovers the time-balance dimensional constraint (c_U + 2 c_g = -0.06, 90% CI -0.16 to +0.12) without being told it.",
+    "Out-of-range tests: power laws extrapolate across gravity and projectile density with 0.07-0.14 dex error; gradient boosting and an MLP fail by 0.4-1.6 dex."
+   ],
+   "claim_supported": "The point-source exponent mu is recoverable from controlled experiments and its gravity dependence transfers to an independent laboratory; the coefficient is material-specific.",
+   "claim_not_supported": "That lunar craters alone could reveal these laws: they lack the impactor mass and speed needed to fit them."
+  },
+  "T": {
+   "type": "T",
+   "title": "Location-aware target properties: what coordinates can predict",
+   "cross_validation": {
+    "n_points": 54,
+    "rmse_ln_idw": 0.45058883741492245,
+    "rmse_ln_terrain_mean": 0.3658490841355836,
+    "rmse_ln_global_mean": 0.36632194861653755,
+    "note": "Leave-one-out on log thickness of the 54 literature points. Points cluster at landing sites, so LOO is optimistic for unsampled regions."
+   },
+   "decision": "Use observed mare fraction; use unit-level regolith prior; do not use the interpolated thickness map (it does not beat a constant in LOO).",
+   "unit_means_m": {
+    "mare": 4.53168700158131,
+    "highland": 5.253122528622062,
+    "n_mare": 19,
+    "n_highland": 35
+   },
+   "mare_area_fraction_65S_65N": 0.1788373049117722,
+   "claim_supported": "Mare vs highland at the crater site is observed and is used to select the substrate (competent basalt vs fractured highland crust).",
+   "claim_not_supported": "A local regolith thickness from coordinates: an interpolated map of 54 published measurements predicts worse than a constant."
+  }
+ }
+}

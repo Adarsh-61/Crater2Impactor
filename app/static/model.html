@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Crater2Impactor - Validation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/main.css?v=v42">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="wordmark-wrap">
+        <a href="/" class="wordmark">Crater2Impactor</a>
+        <div class="site-subtitle">Impactor Parameter Estimation from Lunar Impact Craters</div>
+      </div>
+      <nav class="site-nav">
+        <a href="/">Inverse Inference</a>
+        <a href="/explorer">Forward Physics</a>
+        <a href="/model" class="active">Validation</a>
+        <a href="/about">Method</a>
+        <a href="/feedback">Feedback</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">Validation and Statistical Reliability</h1>
+      <hr class="page-divider">
+      <p class="page-intro">Tests of the inference on synthetic craters, laboratory craters and measured lunar impacts, and a comparison with the previous version of this application.</p>
+    </header>
+
+    <div id="err" class="warnbox" hidden></div>
+
+    <section class="doc-section">
+      <h2>Summary</h2>
+      <p>Synthetic tests check that the calculation is correct and its uncertainty calibrated when the model is right. Only the laboratory and lunar measurements test the model against nature, and no natural lunar crater has an independently known impactor, so none of these numbers is an accuracy for natural impacts.</p>
+      <div class="diagnostics-deck">
+        <div class="ledger-column">
+          <h3>Inference Method</h3>
+          <div id="sum-method"></div>
+        </div>
+        <div class="ledger-column">
+          <h3>Synthetic Calibration</h3>
+          <div id="sum-cal"></div>
+        </div>
+        <div class="ledger-column">
+          <h3>Tests Against Measurements</h3>
+          <div id="sum-real"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section">
+      <h2>Calibration on Synthetic Craters</h2>
+      <p>Synthetic craters are drawn from the model's own stated assumptions, and the posterior is computed for each. If the uncertainty is calibrated, the true value falls inside the 68% and 90% ranges about 68% and 90% of the time.</p>
+      <div class="table-wrap">
+        <table class="scientific-table">
+          <thead>
+            <tr>
+              <th>Quantity</th>
+              <th class="numeric">68% Coverage</th>
+              <th class="numeric">90% Coverage</th>
+              <th class="numeric">Median 90% Width</th>
+              <th class="numeric">Test Craters</th>
+            </tr>
+          </thead>
+          <tbody id="cal-rows"></tbody>
+        </table>
+      </div>
+      <p id="cal-summary" class="table-summary-note"></p>
+    </section>
+
+    <section class="doc-section">
+      <h2>Measured Lunar Impacts</h2>
+      <p>The only lunar craters whose impactors are known independently are those made by spacecraft. All of them were hollow and slow (1.6 to 2.6 km/s), unlike natural impactors, so these cases test the scaling law outside the conditions it was built for.</p>
+      <div class="table-wrap">
+        <table class="scientific-table">
+          <thead>
+            <tr>
+              <th>Impact</th>
+              <th class="numeric">Observed Diameter</th>
+              <th class="numeric">Predicted Diameter</th>
+              <th class="numeric">Known Mass</th>
+              <th class="numeric">Mass From Crater Only</th>
+              <th class="numeric">With Speed and Angle</th>
+            </tr>
+          </thead>
+          <tbody id="real-rows"></tbody>
+        </table>
+      </div>
+      <p id="real-summary" class="table-summary-note"></p>
+      <p class="table-summary-note">From the diameter alone, the current model underestimates these masses more than the previous version did. The cause is the assumed natural impact speed, about seven times too fast for spacecraft: given the measured speed, the error falls from <span id="real-err-d">…</span> to <span id="real-err-e">…</span> dex. The previous version's smaller error came from two compensating assumptions: the same too-fast speeds, and a 30 MPa basalt target for these 20 to 35 m mare craters, which form in regolith. With the true speeds, the previous model overestimates the masses about eightfold. For known artificial impacts, a separate spacecraft population can be selected on the Inverse page.</p>
+      <div class="chart-panel">
+        <div id="real-strip" class="chart"></div>
+        <p class="figure-caption">Ratio of observed to predicted crater diameter for each measured impact, with the previous version's physics and with the current model. A ratio of 1 is a perfect prediction.</p>
+      </div>
+    </section>
+
+    <section class="doc-section">
+      <h2>Comparison with the Previous Version</h2>
+      <p>The previous version estimated the impactor with a trained neural network. Both versions were given the same crater diameters, and each test set is reported separately because they answer different questions. Lower error and interval score are better; coverage should be close to 90%.</p>
+      <div class="table-wrap">
+        <table class="scientific-table">
+          <thead>
+            <tr>
+              <th>Test set</th>
+              <th>Quantity</th>
+              <th class="numeric">Previous: Error</th>
+              <th class="numeric">Current: Error</th>
+              <th class="numeric">Previous: 90% Coverage</th>
+              <th class="numeric">Current: 90% Coverage</th>
+              <th class="numeric">Previous: Interval Score</th>
+              <th class="numeric">Current: Interval Score</th>
+            </tr>
+          </thead>
+          <tbody id="cmp-rows"></tbody>
+        </table>
+      </div>
+      <p id="cmp-summary" class="table-summary-note"></p>
+    </section>
+
+    <section class="doc-section">
+      <h2>Production Rate of New Lunar Craters</h2>
+      <p>New craters found by comparing images of the same areas taken years apart give a crater production rate. Combined with the independently measured rate of small asteroid impacts on Earth, scaled to the Moon, the scaling law predicts how many new craters of each size should appear. No model parameter was adjusted to these counts.</p>
+      <div class="chart-panel">
+        <div id="pop-chart" class="chart"></div>
+        <p class="figure-caption">Number of new craters at least as large as each diameter: observed, and predicted with each set of scaling constants.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="scientific-table">
+          <thead>
+            <tr>
+              <th>Scaling constants</th>
+              <th class="numeric">Predicted Craters (7 m and larger)</th>
+              <th class="numeric">Observed</th>
+              <th class="numeric">Crater Size Offset (90%)</th>
+              <th class="numeric">Regolith Strength (90%)</th>
+            </tr>
+          </thead>
+          <tbody id="pop-rows"></tbody>
+        </table>
+      </div>
+      <p id="pop-summary" class="table-summary-note"></p>
+    </section>
+
+    <section class="doc-section">
+      <h2>Laboratory Craters</h2>
+      <p>Laboratory impacts into sand have fully known projectiles. They test the shared scaling law, though laboratory sand is not lunar regolith.</p>
+      <div class="table-wrap">
+        <table class="scientific-table">
+          <thead>
+            <tr><th>Test</th><th class="numeric">Result</th><th>Reference</th></tr>
+          </thead>
+          <tbody id="lab-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="doc-section">
+      <h2>Robustness to Wrong Assumptions</h2>
+      <p>Synthetic craters generated with assumptions different from those the model states show which mistakes break the uncertainty ranges.</p>
+      <div class="table-wrap">
+        <table class="scientific-table">
+          <thead>
+            <tr><th>Mismatch between truth and model</th><th class="numeric">90% Coverage of Mass</th><th class="numeric">90% Coverage of Speed</th></tr>
+          </thead>
+          <tbody id="rob-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="doc-section">
+      <h2>Research Findings</h2>
+      <p>Results of the recent experiments, each read from the result file named in its row. Simulated results test the model, not nature.</p>
+      <div class="table-wrap">
+        <table class="scientific-table">
+          <thead>
+            <tr><th>Finding</th><th>Evidence</th><th>Result</th><th>Status</th><th>Source</th></tr>
+          </thead>
+          <tbody id="find-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="doc-section">
+      <h2>Location and Target Properties</h2>
+      <p id="loc-text"></p>
+    </section>
+  </main>
+
+  <script type="module" src="/static/js/model.js?v=v49"></script>
+</body>
+</html>
